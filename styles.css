@@ -1,0 +1,783 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --primary-color: #000;
+    --secondary-color: #ff00f0;
+    --background-color-dark: #1c1c1c;
+    --text-color-dark: #fff;
+    --text-color-light: #fff;
+    --button-bg: #003366;
+    --button-text-color: #fff;
+    --accent-color: #003366;
+    --hover-color: #0085ff;
+    --boost-item-bg: #fff;
+    --task-item-bg: #f0f0f0;
+    --claimed-bg: #00ffea;
+    --claimed-text-color: #000;
+    --task-font-size: 14px;
+    --boost-font-size: 14px;
+    --claim-button-size: 12px;
+    --small-text-size: 12px;
+    --current-level-border: #fff; /* لون حواف المستوي الحالي */
+}
+
+/* إزالة تأثير التركيز */
+button, input, select, textarea, img, a {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 900;
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background-image: url('i/sk3.png');
+    background-size: cover;
+    background-position: center;
+} 
+ 
+.screen-content {
+    flex: 1;
+    display: none;
+    padding: 10px;
+    position: relative;
+    background: inherit;
+    overflow: hidden;
+}
+
+.screen-content.scrollable {
+    overflow-y: auto;
+}
+
+.screen-content.active {
+    display: block;
+}
+
+.splash-screen {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('i/sp2.png'); 
+    background-size: cover; 
+    background-position: center; 
+    position: absolute;
+}
+
+.splash-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.loading-text {
+    color: #fff;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.status-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 6px 35px;
+    border-radius: 10px; /* جعل جميع الحواف دائرية */
+    background-color: transparent;
+    /*background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);*/
+    background-position: center;
+    position: relative;
+    /* border: 2px solid #fff;*/
+    width: 100%;
+    margin-top: 2px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */
+}
+ 
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    color: var(--text-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.user-id {
+    font-size: 13px;
+    color: #fff;
+} 
+
+.user-name {
+    font-size: 15px;
+    color: #fff;
+} 
+
+.balance-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: transparent;
+    
+} 
+
+/*.separator {
+    width: 2px;
+    height: 30px;
+    background-color: #fff; 
+    margin: 0 15px;
+}*/
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 15px; /* Slightly larger font for user info */
+    margin-top: 10px;
+    color: #fff; 
+    width: 100%;
+    /* border-top: 2px solid #fff; 
+    padding-top: 2px;*/
+}
+
+#balanceTitle {
+    font-weight: bold;
+    margin-bottom: 7px;
+    font-size: 25px; /* Larger font for balance title */
+    color: #fff; 
+    display: block;
+    border-bottom: 2px solid #fff; /* يمكنك تعديل السماكة واللون حسب الحاجة */
+    padding-bottom: 2px; /* مسافة بين النص والخط */
+}
+
+#balanceAmount {
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 45px;
+    color: #fff; 
+    display: block;
+}
+
+.user-level {
+    position: fixed;
+    top: 20px; /* تعديل لقيم أقل لنقل العنصر إلى الأسفل */
+    left: 90px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
+    text-align: center; 
+    font-size: 14px; /* حجم الخط */
+    width: 100%;
+    padding-top: 10px;
+    color: #fff; 
+    z-index: 5;
+}
+
+.energy-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px; /* تقليل المسافة العلوية */
+    position: relative;
+    top: -54px; /* تقريبه من صورة النقر */
+} 
+
+.progress-bar {
+    width: 180px;
+    height: 16px;
+    justify-content: center;
+    background-color: silver;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    transition: width 0.5s ease;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    transition: width 0.5s ease;
+} 
+
+#energyInfo {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 7px; 
+    color: #fff;
+    position: relative;
+    top: 7px; /* تقريب النص من الشريط */
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(97.5% - 69px);
+}
+
+.clickable-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.clickable-image img {
+    width: 360px;
+    height: 360px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out, filter 0.3s ease-in-out;
+    cursor: pointer;
+    margin-top: -20px; 
+    transform: translateY(-5px);
+    
+}
+
+.clickable-image img:active {
+    transform: scale(0.95);
+    filter: brightness(1.1);
+}
+
+@keyframes coin-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+ 
+.diamond-coin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    pointer-events: none;
+    animation: coin-bounce 1s infinite;
+    z-index: 9999;
+}
+
+.diamond-coin span {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: 2px solid #fff;
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    background-position: center;
+    position: fixed;
+    bottom: 25px;
+    box-sizing: border-box; 
+    width: calc(100% - 20px);
+    left: 10px;
+    right: 10px;
+    border-radius: 15px;
+    z-index: 1000;
+}
+
+.menu button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 8px;
+    box-sizing: border-box; 
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* إضافة التحول والتكبير */
+    border-radius: 25px;
+    position: relative;
+}
+
+.menu button:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    height: 60%;
+    width: 2px;
+    background-color: #fff;
+    top: 18%;
+}
+ 
+.menu button img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 2px;
+}
+
+.menu button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu button.active {
+    transform: scale(1.2);
+    border: 2px solid #fff;
+    border-radius: 25px;
+}
+
+#accountPage {
+    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
+    height: calc(100vh - 150px); /* تحديد ارتفاع مناسب مع الاحتفاظ بالمساحة للأجزاء الأخرى */
+    padding: 10px; /* إضافة مسافة داخلية */
+    padding-bottom: 120px;
+}
+
+.invite-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.invite-image {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+} 
+
+.invite-more {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 15px 40px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.invite-more:hover {
+    background: linear-gradient(180deg, #9f0000, #000);
+} 
+
+#inviteInfo {
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+
+} 
+
+.invite-copy {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+} 
+
+.invite-copy:hover {
+   background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+} 
+
+.friends-list {
+    margin-top: 10px;
+    border: 2px solid #fff;
+    padding: 0;
+    list-style: none;
+    color: #fff;
+    width: 95%;
+    padding: 8px; 
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    border-radius: 15px;
+    display: block;
+}
+
+.friends-list li {
+    padding: 10px;
+    border-bottom: 1px solid var(--text-color-dark);
+}
+
+.friends-list li:last-child {
+    border-bottom: none;
+}
+
+#tasksPage {
+    overflow-y: auto; /* لجعل الصفحة قابلة للتمرير */
+    height: calc(100vh - 150px); /* تحديد ارتفاع مناسب مع الاحتفاظ بالمساحة للأجزاء الأخرى */
+    padding: 10px; /* إضافة مسافة داخلية */
+    padding-bottom: 120px;
+}
+
+.boosts-container, .task-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    max-width: 320px;
+    padding-bottom: 5px; 
+} 
+
+.boost-item, .task-item {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+    padding: 8px;
+    border: 2px solid #fff;
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boost-item p, .task-item p {
+    margin: 0;
+    padding: 0;
+    width: 60%;
+    text-align: left;
+    color: #fff;
+    font-size: var(--task-font-size);
+}
+
+.boost-item img, .task-item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+
+.boost-item button, .task-item button {
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 30%;
+    transition: background-color 0.3s;
+    border: none;
+    font-size: var(--claim-button-size);
+    border: 1px solid #fff;
+}
+
+.boost-item button:hover, .task-item button:hover {
+    background: linear-gradient(180deg, #9f0000, #000);
+}
+
+.task-item button.inactive {
+    background-color: #1c1c1c;
+}
+
+.task-item button.claimed {
+    background-color: #000;
+    color: #fff;
+}
+
+.task-image {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.bos-image {
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+
+}
+ 
+.confirmation-modal {
+    background-color: #000;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    margin-top: -20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.confirmation-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    gap: 13px;
+}
+
+.confirmation-buttons .game-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    background: linear-gradient(180deg, #9f0000, #000);
+    background-position: center;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.confirmation-buttons .game-button:hover {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+}
+
+.notification {
+    position: fixed;
+    top: -100px; /* البداية من فوق الشاشة */
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, #000, #272935);
+    color: #fff;
+    padding: 15px 20px; /* زيادة padding لجعل الإشعار طويل */
+    border-radius: 15px;
+    border: 2px solid #fff;
+    font-size: 16px;
+    z-index: 1000;
+    transition: top 0.5s ease, opacity 0.5s ease; /* انتقال لعناصر الظهور والانزلاق */
+    opacity: 0; /* البداية غير مرئية */
+}
+
+.notification.show {
+    top: 10px; /* موقع الإشعار عند الظهور */
+    opacity: 1; /* مرئية */
+} 
+
+.level-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: center;
+    padding: 5px; 
+    padding-bottom: 100px; 
+}
+
+.level-icon img { 
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.level-item {
+    margin: 4px; /* هامش بين العناصر */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; /* تصحيح القيمة لتكون "center" بدلاً من "column" */
+    text-align: center;
+    background: linear-gradient(180deg, #000, #272935);
+    color: #fff;
+    padding: 5px; /* تقليل الحشوة */
+    border: 2px solid #fff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 250px; /* تقليل العرض الأقصى */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    font-size: 12px; /* تقليل حجم الخط */
+    letter-spacing: -0.3px; /* تقليل المسافة بين الحروف */
+}
+ 
+.level-item img {
+    width: 125px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.level5-image {
+    width: 125px;
+    height: auto;
+    margin-bottom: 10px;
+} 
+
+.level-item.current-level {
+    border: 2px solid var(--current-level-border);
+    box-shadow: 0 0 15px #272935;
+}
+
+.wallet-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.wallet-image {
+    width: 90px;
+    height: auto;
+}
+
+.wallet-button {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    color: #fff;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+.wallet-button:hover {
+    background: linear-gradient(180deg, #9f0000, #1c1c1c);
+}
+
+.coming-soon {
+    color: #fff;
+    font-size: 12px;
+    margin-top: -10px;
+}
+
+.withdraw-input {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    background-color: #1c1c1c;
+    color: var(--text-color-light);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.withdraw-input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.max-button {
+    background-color: #003366;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.max-button:hover {
+    background-color: var(--hover-color);
+}
+
+.level-button-floating {
+    position: fixed;
+    top: 28px; 
+    left: 205px;
+    background-color: transparent;
+    padding: 9px 63px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    z-index: 20; /* تأكد من أن الزر فوق العناصر الأخرى */
+} 
+ 
+.level-button-floating:hover {
+    background-color: transparent;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.level-image {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+} 
+
+#l, #w, #t, #b, #lev, #currentLevelInfo, #i {
+    color: #fff; 
+    font-size: 18px; 
+    margin: 10px 0;
+    text-align: center;
+}

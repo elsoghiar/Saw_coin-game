@@ -1,0 +1,13 @@
+{
+  "puzzles": [
+    {
+      "id": 1,
+      "difficulty": "medium",
+      "question": "Complete the sequence: 3, 6, 9, 12,",
+      "options": ["2", "15", "80", "13", "7", "11"],
+      "answer": "15",
+      "hint": "Add the same number each time .",
+      "reward": 500000 
+    }
+  ]
+}

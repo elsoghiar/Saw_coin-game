@@ -1,0 +1,205 @@
+#Puzzlespage .puzzle-image {
+    width: 130px;
+    height: auto;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+#Puzzlespage #Puzzles {
+    color: #fff; 
+    font-size: 20px; 
+    text-align: center;
+    margin: 10px;
+}
+
+#Puzzlespage .puzzle-btn {
+    padding: 10px 15px;
+    background: linear-gradient(180deg, #9f0000, #000);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    font-family: 'Rubik', sans-serif;
+}
+
+#Puzzlespage .puzzle-btn:hover {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    background-position: center;
+}
+
+/* تخصيص الحاوية */
+#Puzzlespage .puzzle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#Puzzlespage .puzzle-content {
+    background: linear-gradient(180deg, #9f0000, #000);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 400px;
+    min-height: 350px;
+    margin-top: 15px;
+}
+
+#Puzzlespage input, 
+#Puzzlespage button {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+
+}   
+
+#Puzzlespage input {
+    border: 1px solid #fff;
+}
+
+#Puzzlespage input:focus {
+    border-color: var(--hover-color);
+}
+
+#Puzzlespage button {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    background-position: center;
+    color: #fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    cursor: pointer;
+}
+
+#Puzzlespage button:hover {
+    background: linear-gradient(180deg, #9f0000, #000);
+}
+
+#Puzzlespage .notification {
+    margin-top: 20px;
+    font-size: 14px;
+    color: red;
+    z-index: 1000;
+}
+
+#Puzzlespage .success {
+    color: green;
+}
+
+#Puzzlespage .warning {
+    color: orange;
+}
+
+#Puzzlespage #countdownTimer {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+#Puzzlespage .hidden {
+    display: none;
+}
+
+#Puzzlespage .close-btn {
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+#Puzzlespage .room-puzzle {
+    padding: 10px 15px;
+    background: linear-gradient(180deg, #9f0000, #000);
+    color: #fff;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    font-family: 'Rubik', sans-serif;
+    margin-top: 20px;
+}
+
+#Puzzlespage .room-puzzle:hover {
+    background: linear-gradient(90deg, #1c1c1c, #9f620c, #d69a1c);
+    background-position: center;
+}
+
+.puzzle-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* ثلاث أعمدة في الصف الأول */
+    gap: 10px; /* مسافة بين الأزرار */
+    justify-items: center; /* محاذاة الأزرار في المنتصف */
+    margin-top: 20px;
+}
+
+.puzzle-options button {
+    padding: 3px 3px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #9f0000, #000);
+    transition: background-color 0.3s ease;
+}
+
+.puzzle-options button:hover {
+    background: linear-gradient(90deg, #1c1c1c, #9f620c, #d69a1c);
+}
+
+/* تخصيص الزرين الأخيرين ليظهرا في الصف الثاني */
+.puzzle-options button:nth-child(4),
+.puzzle-options button:nth-child(5) {
+    grid-column: span 1; /* توزيع الزرين في الصف الثاني */
+}
+
+#puzzleHint {
+    margin-top: 20px; /* مسافة بين التلميح والأزرار */
+}
+
+/* Countdown timer container styling */
+#countdownTimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;  /* محاذاة المؤقت في المنتصف */
+    letter-spacing: 3px; /* زيادة المسافة بين الأرقام */
+}
+
+/* Styling for the timer itself */
+#timer {
+    animation: blink 1s infinite; /* وميض مستمر */
+    font-size: 20px; /* حجم الخط للمؤقت */
+    color: #9f0000;
+    background-color: black; /* الخلفية السوداء للمؤقت */
+    padding: 8px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.7); /* تأثير الظل */
+    margin-left: 10px; /* مسافة بين النص والمؤقت */
+}
+
+/* Animation for the blinking effect */
+@keyframes blink {
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Styling for the text next to the timer */
+#timeText {
+    font-size: 18px; /* حجم النص العادي */
+    color: #fff; /* لون النص */
+    margin-right: 10px; /* مسافة بين النص والمؤقت */
+    text-align: center;
+}

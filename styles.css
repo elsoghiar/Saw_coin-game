@@ -121,14 +121,14 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 8px 20px;
-    border-radius: 10px; /* جعل جميع الحواف دائرية */
+    padding: 10px 30px;
+    border-radius: 5px; /* جعل جميع الحواف دائرية */
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
     border: none;
     width: %;
-    margin-top: 2px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
+    margin-top: 0; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */
 }
 

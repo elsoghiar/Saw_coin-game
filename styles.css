@@ -123,6 +123,7 @@ body {
     align-items: flex-start;
     padding: 25px 40px;
     border-radius: 0 0 20px 20px; 
+    border-bottom: 2px solid #fff; 
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;

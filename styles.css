@@ -143,15 +143,14 @@ body {
     color: #fff;
 } 
 
-.balance-container {
+/*.balance-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    background-color: transparent;
-    
-} 
+    background-color: transparent;*/
+
 
 .user-info {
     display: flex;

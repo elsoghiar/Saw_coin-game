@@ -217,50 +217,43 @@ body {
 
 .energy-bar-container {
     display: flex;
-    flex-direction: flex-start;
+    flex-direction: row; /* تنظيم العناصر أفقياً */
     align-items: center;
+    justify-content: flex-start; /* محاذاة العناصر إلى اليسار */
     margin-top: 5px; /* تقليل المسافة العلوية */
     position: relative;
     top: -54px; /* تقريبه من صورة النقر */
-} 
+}
 
 .progress-bar {
     width: 180px;
     height: 16px;
-    justify-content: center;
     background-color: silver;
     border-radius: 50px;
     overflow: hidden;
     margin-top: 5px;
+    display: none; /* إخفاء شريط الطاقة */
 }
 
 .progress-bar-inner {
     height: 100%;
     width: 100%;
-    justify-content: center;
     background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
     transition: width 0.5s ease;
+    display: none; /* إخفاء شريط الطاقة الداخلي */
 }
-
-.progress-bar-inner {
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
-    transition: width 0.5s ease;
-} 
 
 #energyInfo {
     font-size: 25px;
     font-weight: bold;
-    margin-bottom: 7px; 
+    margin-bottom: 7px;
     color: #fff;
     position: relative;
-    top: 7px; /* تقريب النص من الشريط */
-    text-align: left;
-    margin-left: auto;
+    top: 7px; /* تقريب النص من شريط الطاقة (المخفي حالياً) */
+    text-align: left; /* محاذاة النص لليسار */
+    margin-left: 0; /* إزالة المساحة الفارغة على اليمين */
 }
-
+ 
 .main-content {
     display: flex;
     flex-direction: column;

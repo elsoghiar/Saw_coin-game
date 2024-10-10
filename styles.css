@@ -327,7 +327,7 @@ body {
     justify-content: space-between;
     padding: 8px;
     border: 2px solid #fff;
-    background: linear-gradient(180deg, #000, #9f0000);
+    background: linear-gradient(100deg, #000, #9f0000);
     background-position: center;
     position: fixed;
     bottom: 25px;
@@ -368,8 +368,8 @@ body {
 }
  
 .menu button img {
-    width: 32px;
-    height: 32px;
+    width: 35px;
+    height: 35px;
     margin-bottom: 2px;
 }
 

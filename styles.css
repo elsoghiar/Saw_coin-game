@@ -122,14 +122,14 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     padding: 20px 30px;
-    border-radius: 0 0 15px 15px; 
+    border-radius: 15px 15px 15px 15px; 
     border: 1px solid #fff; 
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
     width: 90%;
     height: %; 
-    margin-top: ; /* إضافة مسافة 2 بيكس بين الحاوية والشاشه*/
+    margin-top: 3px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشه*/
 }
 
  .game-title {

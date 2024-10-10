@@ -126,8 +126,8 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
-    border: 2px solid #fff;
-    width: 100%;
+    border: none;
+    width: %;
     margin-top: 2px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */
 }

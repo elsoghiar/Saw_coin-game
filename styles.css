@@ -127,9 +127,11 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
-    width: 90%;
-    height: %; 
-    margin-top: 3px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشه*/
+    width: 70%;
+    height: auto; /* تحديد ارتفاع تلقائي */
+    margin: 5px auto; /* توسيط العنصر أفقياً */
+    margin-left: 10px; /* إضافة مسافة من اليسار */
+    margin-right: 10px; /* إضافة مسافة من اليمين */
 }
 
  .game-title {

@@ -14,7 +14,7 @@
 
 #Puzzlespage .puzzle-btn {
     padding: 10px 15px;
-    background: linear-gradient(180deg, #9f0000, #000);
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
     color: #fff;
     border-radius: 10px;
     font-size: 18px;
@@ -24,7 +24,7 @@
 }
 
 #Puzzlespage .puzzle-btn:hover {
-    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    background: linear-gradient(180deg, #9f0000, #000);
     background-position: center;
 }
 
@@ -121,7 +121,7 @@
 
 #Puzzlespage .room-puzzle {
     padding: 10px 15px;
-    background: linear-gradient(180deg, #9f0000, #000);
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
     color: #fff;
     border-radius: 10px;
     font-size: 18px;
@@ -132,7 +132,7 @@
 }
 
 #Puzzlespage .room-puzzle:hover {
-    background: linear-gradient(90deg, #1c1c1c, #9f620c, #d69a1c);
+    background: linear-gradient(180deg, #9f0000, #000);
     background-position: center;
 }
 

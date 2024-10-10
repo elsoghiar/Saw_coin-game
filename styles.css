@@ -327,7 +327,7 @@ body {
     justify-content: space-between;
     padding: 8px;
     border: 2px solid #fff;
-    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+    background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: fixed;
     bottom: 25px;
@@ -398,7 +398,7 @@ body {
 }
 
 .invite-image {
-    width: 180px;
+    width: 120px;
     height: auto;
     display: block;
     margin: 0 auto;

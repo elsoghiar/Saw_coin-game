@@ -218,17 +218,13 @@ body {
 .energy-bar-container {
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: flex-start;
-    margin-top: 5px;
-    position: relative;
-    top: -54px;
+    align-items: flex-start;
 }
 
 #energyInfo {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 7px;
     color: #fff;
     position: relative;
     text-align: left; /* محاذاة النص لليسار */

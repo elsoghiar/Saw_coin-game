@@ -172,7 +172,7 @@ body {
     font-size: 25px; /* Larger font for balance title */
     color: #fff; 
     display: block;
-    border-bottom: 2px solid #fff; /* يمكنك تعديل السماكة واللون حسب الحاجة */
+    /*border-bottom: 2px solid #fff;*/
     padding-bottom: 2px; /* مسافة بين النص والخط */
 }
 

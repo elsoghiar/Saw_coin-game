@@ -220,6 +220,8 @@ body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    position: relative;
+    top: -10px; /* رفع الحاوية قليلاً */
 }
 
 #energyInfo {
@@ -227,6 +229,7 @@ body {
     font-weight: bold;
     color: #fff;
     position: relative;
+    top: -10px; /* رفع النص قليلاً */
     text-align: left; /* محاذاة النص لليسار */
     margin-left: 0; /* عدم إضافة مسافة إلى اليمين */
     direction: rtl; /* لضمان أن النص يبدأ من اليسار في اللغات العربية */

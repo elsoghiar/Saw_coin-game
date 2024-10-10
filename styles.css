@@ -128,7 +128,7 @@ body {
     background-position: center;
     position: relative;
     width: %;
-    margin-top: 1px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشه*/
+    margin-top: -5px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشه*/
 }
 
  .game-title {

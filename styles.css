@@ -132,7 +132,12 @@ body {
     margin-top: 2px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */
 }
- 
+
+ .game-title {
+    font-size: 20px;
+    color: #fff;
+}  
+
 .user-id {
     font-size: 15px;
     color: #fff;

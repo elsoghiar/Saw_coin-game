@@ -172,11 +172,12 @@ body {
     align-items: center;
     background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
     font-size: 15px; 
-    margin-top: 10px;
+    margin: 10px;
     color: #fff; 
     width: 100%;
-    border-top: 2px solid #fff; 
-    padding-top: 2px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 2px solid #fff; 
 }
 
 #balanceTitle {

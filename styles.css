@@ -225,31 +225,12 @@ body {
     top: -54px; /* تقريبه من صورة النقر */
 }
 
-.progress-bar {
-    width: 180px;
-    height: 16px;
-    background-color: silver;
-    border-radius: 50px;
-    overflow: hidden;
-    margin-top: 5px;
-    display: none; /* إخفاء شريط الطاقة */
-}
-
-.progress-bar-inner {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
-    transition: width 0.5s ease;
-    display: none; /* إخفاء شريط الطاقة الداخلي */
-}
-
 #energyInfo {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 7px;
     color: #fff;
     position: relative;
-    top: 7px; /* تقريب النص من شريط الطاقة (المخفي حالياً) */
     text-align: left; /* محاذاة النص لليسار */
     margin-left: 0; /* إزالة المساحة الفارغة على اليمين */
 }

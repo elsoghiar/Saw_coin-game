@@ -217,12 +217,12 @@ body {
 
 .energy-bar-container {
     display: flex;
-    flex-direction: row; /* تنظيم العناصر أفقياً */
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* محاذاة العناصر إلى اليسار */
-    margin-top: 5px; /* تقليل المسافة العلوية */
+    justify-content: flex-start;
+    margin-top: 5px;
     position: relative;
-    top: -54px; /* تقريبه من صورة النقر */
+    top: -54px;
 }
 
 #energyInfo {
@@ -232,7 +232,8 @@ body {
     color: #fff;
     position: relative;
     text-align: left; /* محاذاة النص لليسار */
-    margin-left: 0; /* إزالة المساحة الفارغة على اليمين */
+    margin-left: 0; /* عدم إضافة مسافة إلى اليمين */
+    direction: rtl; /* لضمان أن النص يبدأ من اليسار في اللغات العربية */
 }
  
 .main-content {

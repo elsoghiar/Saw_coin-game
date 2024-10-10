@@ -121,13 +121,12 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 6px 35px;
+    padding: 8px 20px;
     border-radius: 10px; /* جعل جميع الحواف دائرية */
-    background-color: transparent;
-    /*background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);*/
+    background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
-    /* border: 2px solid #fff;*/
+    border: 2px solid #fff;
     width: 100%;
     margin-top: 2px; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */

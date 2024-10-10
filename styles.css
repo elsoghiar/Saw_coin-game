@@ -133,19 +133,6 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */
 }
  
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
-    color: var(--text-color-light);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    margin-right: 10px;
-}
-
 .user-id {
     font-size: 15px;
     color: #fff;

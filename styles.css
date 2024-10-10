@@ -221,7 +221,8 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
-    top: -40px; /* رفع الحاوية قليلاً */
+    top: -40px;
+    left: 10px;
 }
 
 #energyInfo {

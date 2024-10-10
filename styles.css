@@ -127,7 +127,7 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
-    width: 70%;
+    width: %;
     height: auto; /* تحديد ارتفاع تلقائي */
     margin: 5px auto; /* توسيط العنصر أفقياً */
     margin-left: 10px; /* إضافة مسافة من اليسار */

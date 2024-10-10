@@ -252,16 +252,13 @@ function updateUI() {
     updateLevelDisplay();
 }
 
-// تنسيق الأرقام الكبيرة
 function formatNumber(value) {
     if (value >= 1_000_000_000) {
-        return `${(value / 1_000_000_000).toFixed(2)}B`;
+        return `${(value / 1_000_000_000).toFixed(2)}B`; // للأرقام بالمليارات
     } else if (value >= 1_000_000) {
-        return `${(value / 1_000_000).toFixed(2)}M`;
-    } else if (value >= 1_000) {
-        return `${(value / 1_000).toFixed(1)}K`;
+        return `${(value / 1_000_000).toFixed(2)}M`; // للأرقام بالملايين
     } else {
-        return value.toLocaleString();
+        return value.toLocaleString(); // عرض الأرقام كما هي دون استخدام K
     }
 }
 

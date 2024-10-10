@@ -217,7 +217,7 @@ body {
 
 .energy-bar-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: flex-start;
     align-items: center;
     margin-top: 5px; /* تقليل المسافة العلوية */
     position: relative;
@@ -257,6 +257,8 @@ body {
     color: #fff;
     position: relative;
     top: 7px; /* تقريب النص من الشريط */
+    text-align: left;
+    margin-left: auto;
 }
 
 .main-content {

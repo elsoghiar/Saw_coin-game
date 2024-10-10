@@ -195,7 +195,7 @@ body {
     top: 20px; /* تعديل لقيم أقل لنقل العنصر إلى الأسفل */
     left: -50px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
     text-align: center; 
-    font-size: 14px; /* حجم الخط */
+    font-size: 10px; /* حجم الخط */
     width: 100%;
     padding-top: 10px;
     color: #fff; 
@@ -713,7 +713,7 @@ body {
     top: 28px; 
     left: 205px;
     background-color: transparent;
-    padding: 9px 63px;
+    padding: 5px 40px;
     border-radius: 10px;
     border: 2px solid #fff;
     cursor: pointer;

@@ -121,7 +121,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 10px 30px;
+    padding: 30px 30px;
     border-radius: 5px; /* جعل جميع الحواف دائرية */
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;

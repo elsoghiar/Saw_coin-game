@@ -253,12 +253,12 @@ function updateUI() {
 }
 
 function formatNumber(value) {
-    if (value >= 1_000_000_000) {
-        return `${(value / 1_000_000_000).toFixed(2)}B`; // للأرقام بالمليارات
-    } else if (value >= 1_000_000) {
-        return `${(value / 1_000_000).toFixed(2)}M`; // للأرقام بالملايين
+    if (value >= 1_000_000_000_000) {
+        return `${(value / 1_000_000_000_000).toFixed(2)}T`;
+    } else if (value >= 1_000_000_000) {
+        return `${(value / 1_000_000_000).toFixed(2)}B`; 
     } else {
-        return value.toLocaleString(); // عرض الأرقام كما هي دون استخدام K
+        return value.toLocaleString(); 
     }
 }
 

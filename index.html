@@ -20,10 +20,6 @@
         <!-- Status Bar -->
         <div class="status-bar">
             <div id="balanceContainer" class="balance-container">
-                <div class="user-info">
-                    <div id="userTelegramName">Username</div>
-                    <div id="userTelegramId">(ID: 123456)</div>
-                </div>
                 <div class="separator"></div>
                 <div id="userLevel" class="user-level">
                     Level : <span id="currentLevelName"></span>
@@ -50,6 +46,12 @@
         <!-- Account Page -->
         <div id="accountPage" class="screen-content scrollable">
           <img src="i/friends3.png" alt="invite Image" class="invite-image">
+            <div class="profile-pic" id="profilePicDefault">👤</div>
+                <div class="user-info-text">
+                    <div class="user-name"><span id="userTelegramName">Username</span></div>
+                    <div class="user-id"><span id="userTelegramId">123456</span></div>
+                </div>
+        </section>
             <div class="invite-section">
                 <button class="invite-more" id="inviteFriendsBtn">Invite Friends</button>
                 <button class="invite-copy" id="copyInviteLinkBtn">Copy Link 🔗</button>

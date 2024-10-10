@@ -123,11 +123,10 @@ body {
     align-items: flex-start;
     padding: 25px 40px;
     border-radius: 0 0 20px 20px; 
-    border-bottom: 2px solid #fff; 
+    border: 2px solid #fff; 
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
-    border: none;
     width: %;
     margin-top: 0; /* إضافة مسافة 2 بيكس بين الحاوية والشاشة العلوية */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف لجعل الحاوية تبدو بارزة */

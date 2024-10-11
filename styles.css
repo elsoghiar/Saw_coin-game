@@ -121,17 +121,17 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 20px 30px;
+    padding: 22px 35px;
     border-radius: 15px 15px 15px 15px; 
-    border: 1px solid #fff; 
+    border: 2px solid #343434; 
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: relative;
     width: %;
-    height: auto; /* تحديد ارتفاع تلقائي */
-    margin: 5px auto; /* توسيط العنصر أفقياً */
-    margin-left: 10px; /* إضافة مسافة من اليسار */
-    margin-right: 10px; /* إضافة مسافة من اليمين */
+    height: auto; 
+    margin: 5px auto;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
  .game-title {
@@ -151,12 +151,12 @@ body {
 
 /*.balance-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    background-color: transparent;*/
-
+    background-color: transparent;
+}*/
 
 .user-info {
     display: flex;
@@ -169,7 +169,7 @@ body {
     width: %;
     padding: 8px 25px;
     border-radius: 12px;
-    border: 2px solid #fff; 
+    border: 2px solid #343434; 
 }
 
 #balanceTitle {
@@ -183,25 +183,28 @@ body {
 }
 
 #balanceAmount {
+   /* font-family: 'Fira Mono', 'Rubik', sans-serif; 
+    width: 100px;
+    text-align: center;*/
     font-weight: bold;
-    margin-top: 0;
+    margin: 0 auto;
     font-size: 45px;
     color: #fff; 
     display: block;
 }
 
-.user-level {
+/*.user-level {
     position: fixed;
-    top: 20px; /* تعديل لقيم أقل لنقل العنصر إلى الأسفل */
-    left: -50px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
+    top: 10px;
+    left: -100px;
     text-align: center; 
-    font-size: 10px; /* حجم الخط */
+    font-size: 12px;
     width: 100%;
     padding-top: 10px;
     color: #fff; 
     z-index: 5;
 }
-
+*/
 .energy-bar-container {
     display: flex;
     flex-direction: row;
@@ -239,23 +242,21 @@ body {
 }
 
 .clickable-image img {
-    width: 360px;
-    height: 360px;
+    width: 350px;
+    height: 350px;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
     transition: transform 0.2s ease-in-out, filter 0.3s ease-in-out;
     cursor: pointer;
-    margin-top: -20px; 
-    transform: translateY(-5px);
-    
 }
 
-.clickable-image img:active {
+.clickable-image img.active {
     transform: scale(0.95);
     filter: brightness(1.1);
 }
 
+/* الحركات */
 @keyframes coin-bounce {
     0%, 100% {
         transform: translateY(0);
@@ -263,7 +264,8 @@ body {
     50% {
         transform: translateY(-15px);
     }
-}
+} 
+ 
  
 .diamond-coin {
     position: absolute;
@@ -280,7 +282,7 @@ body {
     top: -20px;
     right: -10px;
     color: #fff;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -290,7 +292,7 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 8px;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: fixed;
@@ -371,7 +373,7 @@ body {
 .invite-more {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     padding: 15px 40px;
     font-size: 15px;
     font-weight: bold;
@@ -396,7 +398,7 @@ body {
 .invite-copy {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     padding: 14px 28px;
     font-size: 15px;
     font-weight: bold;
@@ -412,7 +414,7 @@ body {
 
 .friends-list {
     margin-top: 10px;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     padding: 0;
     list-style: none;
     color: #fff;
@@ -458,7 +460,7 @@ body {
     max-width: 300px;
     margin: 10px 0;
     padding: 8px;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     background: linear-gradient(180deg, #000, #9f0000);
     border-radius: 10px;
     display: flex;
@@ -547,7 +549,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     cursor: pointer;
     background: linear-gradient(180deg, #9f0000, #000);
     background-position: center;
@@ -564,11 +566,11 @@ body {
     top: -100px; /* البداية من فوق الشاشة */
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(180deg, #000, #272935);
+    background: linear-gradient(180deg, #000, #343434);
     color: #fff;
     padding: 15px 20px; /* زيادة padding لجعل الإشعار طويل */
     border-radius: 15px;
-    border: 2px solid #fff;
+    border: 1px solid #000;
     font-size: 16px;
     z-index: 1000;
     transition: top 0.5s ease, opacity 0.5s ease; /* انتقال لعناصر الظهور والانزلاق */
@@ -607,7 +609,7 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     padding: 5px; /* تقليل الحشوة */
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     border-radius: 20px;
     width: 100%;
     max-width: 250px; /* تقليل العرض الأقصى */
@@ -630,16 +632,17 @@ body {
 
 .level-item.current-level {
     border: 2px solid var(--current-level-border);
-    box-shadow: 0 0 15px #272935;
+    box-shadow: 0 0 15px #343434;
 }
 
 .wallet-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: center;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 20px;
+    padding-top: 200px;
 }
 
 .wallet-image {
@@ -650,7 +653,7 @@ body {
 .wallet-button {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
-    border: 2px solid white;
+    border: 2px solid #343434; 
     padding: 10px 20px;
     border-radius: 12px;
     cursor: pointer;
@@ -710,18 +713,19 @@ body {
 
 .level-button-floating {
     position: fixed;
-    top: 28px; 
-    left: 205px;
+    top: 25px; 
+    left: 146px;
     background-color: transparent;
-    padding: 5px 40px;
+    color: #fff; 
+    padding: 3px 5px;
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: 2px solid #343434;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
-    z-index: 20; /* تأكد من أن الزر فوق العناصر الأخرى */
+    z-index: 1;  
+
 } 
- 
 .level-button-floating:hover {
     background-color: transparent;
 }
@@ -744,4 +748,5 @@ body {
     font-size: 18px; 
     margin: 10px 0;
     text-align: center;
-}
+ }
+

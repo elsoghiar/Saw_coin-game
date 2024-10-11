@@ -638,18 +638,17 @@ body {
 
 .wallet-container {
     display: flex;
-    flex-direction: center;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 20px;
-    padding-top: 200px;
 }
 
 .wallet-image {
     width: 90px;
     height: auto;
-}
+} 
 
 .wallet-button {
     background: linear-gradient(180deg, #000, #9f0000);

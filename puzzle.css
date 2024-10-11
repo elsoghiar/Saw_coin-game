@@ -13,14 +13,16 @@
 }
 
 #Puzzlespage .puzzle-btn {
-    padding: 10px 15px;
+    padding: 10px 8px;
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border-radius: 10px;
     font-size: 18px;
     cursor: pointer;
-    border: 2px solid #fff;
-    font-family: 'Rubik', sans-serif;
+    border: 2px solid #343434; 
+    width: 90%; /* العرض 90% */
+    display: block; /* لجعل العنصر يعمل ككتلة */
+    margin: 0 auto 15px; /* لمركزة الزر في المنتصف */
 }
 
 #Puzzlespage .puzzle-btn:hover {
@@ -44,13 +46,13 @@
 }
 
 #Puzzlespage .puzzle-content {
-    background: linear-gradient(180deg, #000);
+    background: linear-gradient(180deg, #000, #343434);
     padding: 25px;
     border-radius: 12px;
     text-align: center;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     width: 80%;
-    max-width: 400px;
+    max-width: 500px;
     min-height: 350px;
     margin-top: 15px;
 }
@@ -66,7 +68,7 @@
 }   
 
 #Puzzlespage input {
-    border: 1px solid #fff;
+    border: 2px solid #343434; 
 }
 
 #Puzzlespage input:focus {
@@ -78,7 +80,7 @@
     background-position: center;
     color: #fff;
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     cursor: pointer;
 }
 
@@ -116,19 +118,20 @@
     color: white;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: none;
 }
 
 #Puzzlespage .room-puzzle {
-    padding: 10px 15px;
+    padding: 10px 8px;
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border-radius: 10px;
     font-size: 18px;
     cursor: pointer;
-    border: 2px solid #fff;
-    font-family: 'Rubik', sans-serif;
-    margin-top: 20px;
+    border: 2px solid #343434; 
+    width: 90%;
+    display: block; 
+    margin: 0 auto;
 }
 
 #Puzzlespage .room-puzzle:hover {
@@ -148,7 +151,7 @@
     padding: 3px 3px;
     font-size: 15px;
     cursor: pointer;
-    border: 2px solid #fff;
+    border: 2px solid #343434; 
     border-radius: 10px;
     background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
     transition: background-color 0.3s ease;
@@ -202,4 +205,4 @@
     color: #fff; /* لون النص */
     margin-right: 10px; /* مسافة بين النص والمؤقت */
     text-align: center;
-}
+ }

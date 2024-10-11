@@ -752,10 +752,10 @@ body {
  }
 
 .boosts-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 10px;
+    background: linear-gradient(180deg, #000, #9f0000);
+    color: #fff;
+    border: 2px solid #343434;
+    padding: 10px 7px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -766,9 +766,9 @@ body {
 }
 
 .boosts-button img {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     vertical-align: middle;
-    margin-right: 5px;
+    margin-right: 10px;
 }
  

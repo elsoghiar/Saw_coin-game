@@ -54,19 +54,20 @@ const uiElements = {
     fillEnergyUpgradeBtn: document.getElementById('fillEnergyBtn'),
     inviteFriendsBtn: document.getElementById('inviteFriendsBtn'),
     copyInviteLinkBtn: document.getElementById('copyInviteLinkBtn'),
-    const puzzleContainer = document.getElementById('puzzleContainer');
-    const openPuzzleBtn = document.getElementById('openPuzzleBtn');
-    const puzzleQuestion = document.getElementById('puzzleQuestion');
-    const puzzleOptions = document.getElementById('puzzleOptions');
-    const puzzleNotification = document.getElementById('puzzleNotification');
-    const puzzleHint = document.getElementById('puzzleHint');
-    const timerDisplay = document.getElementById('timer');
-    const closePuzzleBtn = document.getElementById('closePuzzleBtn');
-    const remainingAttemptsDisplay = document.createElement('div'); // مكان عرض المحاولات المتبقية
-    remainingAttemptsDisplay.id = 'remainingAttempts';
-    document.querySelector('.puzzle-content').appendChild(remainingAttemptsDisplay); // إضافة عرض المحاولات المتبقية
-
+    puzzleContainer: document.getElementById('puzzleContainer'),
+    openPuzzleBtn: document.getElementById('openPuzzleBtn'),
+    puzzleQuestion: document.getElementById('puzzleQuestion'),
+    puzzleOptions: document.getElementById('puzzleOptions'),
+    puzzleNotification: document.getElementById('puzzleNotification'),
+    puzzleHint: document.getElementById('puzzleHint'),
+    timerDisplay: document.getElementById('timer'),
+    closePuzzleBtn: document.getElementById('closePuzzleBtn'),
+    remainingAttemptsDisplay: document.createElement('div') // مكان عرض المحاولات المتبقية
 };
+
+// إضافة عرض المحاولات المتبقية إلى DOM
+uiElements.remainingAttemptsDisplay.id = 'remainingAttempts';
+document.querySelector('.puzzle-content').appendChild(uiElements.remainingAttemptsDisplay);
 
 // حالة اللعبة
 let gameState = {

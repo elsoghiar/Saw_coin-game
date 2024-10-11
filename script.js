@@ -57,10 +57,6 @@ const uiElements = {
 
 };
 
-function navigateToBoosts() {
-       document.querySelector('[data-target="boostsPage"]').click();
-    }
-
 // حالة اللعبة
 let gameState = {
     balance: 0,

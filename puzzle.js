@@ -6,7 +6,7 @@ async function loadPuzzles() {
         const data = await response.json();
         return data.puzzles;
     } catch (error) {
-        console.error(error);
+        console.error('Error loading puzzle:', error.message);
         showNotification(uiElements.purchaseNotification, 'Error loading puzzle. Please try again later.');
     }
 }
@@ -17,18 +17,22 @@ function getTodaysPuzzle(puzzles) {
 }
 
 // تعريف عناصر DOM
-const puzzleContainer = document.getElementById('puzzleContainer');
-const openPuzzleBtn = document.getElementById('openPuzzleBtn');
-const puzzleQuestion = document.getElementById('puzzleQuestion');
-const puzzleOptions = document.getElementById('puzzleOptions');
-const puzzleNotification = document.getElementById('puzzleNotification');
-const puzzleHint = document.getElementById('puzzleHint');
-const timerDisplay = document.getElementById('timer');
-const closePuzzleBtn = document.getElementById('closePuzzleBtn');
-const remainingAttemptsDisplay = document.createElement('div'); // مكان عرض المحاولات المتبقية
-remainingAttemptsDisplay.id = 'remainingAttempts';
-document.querySelector('.puzzle-content').appendChild(remainingAttemptsDisplay); // إضافة عرض المحاولات المتبقية
+const uiElements = {
+    puzzleContainer: document.getElementById('puzzleContainer'),
+    openPuzzleBtn: document.getElementById('openPuzzleBtn'),
+    puzzleQuestion: document.getElementById('puzzleQuestion'),
+    puzzleOptions: document.getElementById('puzzleOptions'),
+    puzzleNotification: document.getElementById('puzzleNotification'),
+    puzzleHint: document.getElementById('puzzleHint'),
+    timerDisplay: document.getElementById('timer'),
+    closePuzzleBtn: document.getElementById('closePuzzleBtn'),
+    remainingAttemptsDisplay: document.createElement('div'), // مكان عرض المحاولات المتبقية
+    balanceDisplay: document.getElementById('balanceDisplay'),
+};
 
+// إضافة عرض المحاولات المتبقية إلى الصفحة
+uiElements.remainingAttemptsDisplay.id = 'remainingAttempts';
+document.querySelector('.puzzle-content').appendChild(uiElements.remainingAttemptsDisplay);
 
 // حالة اللعبة (استخدام gameState من الملف الرئيسي)
 let currentPuzzle;
@@ -69,6 +73,7 @@ function startCountdown() {
 
         if (timeLeft <= 0) {
             clearInterval(countdownInterval); // إيقاف العداد
+            timeLeft = 0; // تعيين الوقت إلى صفر
             handlePuzzleTimeout(); // انتهاء الوقت
         }
     }, 10); // تحديث كل 10 مللي ثانية

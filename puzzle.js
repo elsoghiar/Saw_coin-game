@@ -71,9 +71,7 @@ function startCountdown() {
 // التعامل مع انتهاء الوقت
 function handlePuzzleTimeout() {
     showNotification(puzzleNotification, "Time's up! You failed to solve the puzzle.");
-    gameState.balance -= penaltyAmount; // خصم العملات
-    updateUserData(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
-    updateUI();
+    updateBalance(-penaltyAmount); // خصم العملات
     closePuzzle(); // إغلاق الأحجية بعد انتهاء الوقت
 }
 
@@ -99,12 +97,7 @@ function handlePuzzleSuccess() {
     clearInterval(countdownInterval); // إيقاف العداد
     puzzleSolved = true; // تحديث حالة الأحجية
     showNotification(puzzleNotification, `Correct! You've earned ${puzzleReward} coins.`); // عرض إشعار الفوز
-
-    // إضافة المكافأة إلى رصيد اللاعب
-    gameState.balance += puzzleReward;
-    saveGameState(puzzleReward); // تحديث الرصيد في قاعدة البيانات
-    updateUI();
-
+    updateBalance(puzzleReward); // إضافة المكافأة
     closePuzzleBtn.classList.remove('hidden'); // إظهار زر إغلاق الأحجية
     document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // تعطيل الأزرار بعد الفوز
 }
@@ -115,25 +108,27 @@ function handlePuzzleWrongAnswer() {
 
     if (attempts === maxAttempts) {
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
-        gameState.balance -= penaltyAmount; // خصم 500 عملة من الرصيد
-        saveGameState(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
-        updateUI();
+        updateBalance(-penaltyAmount); // خصم العملات
         closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
     } else {
         showNotification(puzzleNotification, `Wrong answer. You have ${maxAttempts - attempts} attempts remaining.`);
     }
 }
 
+// تحديث الرصيد
+function updateBalance(amount) {
+    gameState.balance += amount;
+    updateBalanceInDB(amount);
+    updateUI();
+}
+
 // دالة لتحديث الرصيد في قاعدة البيانات
 async function updateBalanceInDB(amount) {
-    const userid = gameState.balance; // الحصول على معرف المستخدم من حالة اللعبة
-
     try {
-        // تحديث الرصيد في قاعدة البيانات
         const { error } = await supabase
             .from('users')
             .update({ balance: gameState.balance })
-            .eq('telegram_id', userTelegramId);
+            .eq('telegram_id', gameState.userTelegramId);
 
         if (error) {
             console.error('Error updating balance:', error);
@@ -141,6 +136,7 @@ async function updateBalanceInDB(amount) {
         }
     } catch (error) {
         console.error('Database error:', error);
+        showNotification(puzzleNotification, 'Error updating balance. Please try again later.');
     }
 }
 
@@ -173,13 +169,9 @@ puzzleOptions.addEventListener('click', function (event) {
 openPuzzleBtn.addEventListener('click', displayTodaysPuzzle); // فتح الأحجية عند الضغط على الزر
 closePuzzleBtn.addEventListener('click', closePuzzle); // إغلاق الأحجية عند الضغط على زر الإغلاق
 
-// Placeholder functions for game logic
+// تحديث واجهة المستخدم
 function updateUI() {
-    console.log("Balance updated:", gameState.balance); // تحديث واجهة المستخدم
-}
-
-function saveGameState() {
-    console.log("Game state saved"); // حفظ حالة اللعبة
+    document.getElementById('balanceDisplay').innerText = gameState.balance.toLocaleString(); // عرض الرصيد الحالي
 }
 
 // Sample gameState for testing

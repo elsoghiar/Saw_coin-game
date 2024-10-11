@@ -49,6 +49,7 @@ async function displayTodaysPuzzle() {
     puzzleOptions.innerHTML = optionsHtml;
 
     puzzleContainer.classList.remove('hidden'); // إظهار الأحجية
+    closePuzzleBtn.classList.add('hidden'); // إخفاء زر الإغلاق حتى يتم الحل
     startCountdown(); // بدء العداد
 }
 
@@ -70,6 +71,7 @@ function startCountdown() {
 
 // التعامل مع انتهاء الوقت
 function handlePuzzleTimeout() {
+    clearInterval(countdownInterval); // إيقاف المؤقت
     showNotification(puzzleNotification, "Time's up! You failed to solve the puzzle.");
     updateBalance(-penaltyAmount); // خصم العملات
     closePuzzle(); // إغلاق الأحجية بعد انتهاء الوقت
@@ -79,7 +81,7 @@ function handlePuzzleTimeout() {
 function checkPuzzleAnswer(selectedOption) {
     if (puzzleSolved || attempts >= maxAttempts) {
         // إذا كان المستخدم قد استنفذ المحاولات أو حل الأحجية
-        showNotification(puzzleNotification, 'You have failed. Please try again later.');
+        showNotification(puzzleNotification, puzzleSolved ? 'You have already solved this puzzle.' : 'You have failed. Please try again later.');
         return; // عدم السماح بالمزيد من النقرات
     }
 
@@ -107,6 +109,7 @@ function handlePuzzleWrongAnswer() {
     attempts++; // زيادة عدد المحاولات
 
     if (attempts === maxAttempts) {
+        clearInterval(countdownInterval); // إيقاف المؤقت بعد الخسارة
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
         updateBalance(-penaltyAmount); // خصم العملات
         closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
@@ -118,8 +121,13 @@ function handlePuzzleWrongAnswer() {
 // تحديث الرصيد
 function updateBalance(amount) {
     gameState.balance += amount;
-    updateBalanceInDB(amount);
-    updateUI();
+    updateBalanceInDB(amount)
+        .then(() => {
+            updateUI(); // تحديث واجهة المستخدم بعد تحديث الرصيد بنجاح
+        })
+        .catch(() => {
+            showNotification(puzzleNotification, 'Error updating balance. Please try again later.');
+        });
 }
 
 // دالة لتحديث الرصيد في قاعدة البيانات
@@ -131,12 +139,11 @@ async function updateBalanceInDB(amount) {
             .eq('telegram_id', gameState.userTelegramId);
 
         if (error) {
-            console.error('Error updating balance:', error);
-            showNotification(puzzleNotification, 'Error updating balance. Please try again later.');
+            throw new Error('Error updating balance');
         }
     } catch (error) {
         console.error('Database error:', error);
-        showNotification(puzzleNotification, 'Error updating balance. Please try again later.');
+        throw error;
     }
 }
 
@@ -145,7 +152,7 @@ function showNotification(notificationElement, message) {
     notificationElement.innerText = message; // تعيين نص الإشعار
     notificationElement.classList.add('show'); // إظهار الإشعار
     setTimeout(() => {
-        notificationElement.classList.remove('show'); // إخفاء الإشعار بعد 3 ثوانٍ
+        notificationElement.classList.remove('show'); // إخفاء الإشعار بعد 4 ثوانٍ
     }, 4000);
 }
 
@@ -155,7 +162,7 @@ function closePuzzle() {
     puzzleContainer.classList.add('hidden'); // إخفاء الأحجية
     puzzleOptions.innerHTML = '';  // مسح الأزرار
     puzzleNotification.innerText = ''; // مسح الإشعارات
-    closePuzzleBtn.classList.add('hidden'); // إخفاء زر الإغلاق
+    closePuzzleBtn.classList.remove('hidden'); // إظهار زر الإغلاق
     attempts = 0; // إعادة تعيين عدد المحاولات
     puzzleSolved = false; // إعادة تعيين حالة الأحجية
 }

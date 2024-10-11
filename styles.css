@@ -756,7 +756,7 @@ body {
 
 .boosts-button {
     position: absolute;
-    top: 440px; /* غير هذا الرقم حسب الحاجة لضبط المكان */
+    top: 442px; /* غير هذا الرقم حسب الحاجة لضبط المكان */
     right: 10px; /* المسافة من الجانب الأيمن */
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;

@@ -742,6 +742,28 @@ setInterval(() => {
     inviteButton.style.transform = `scale(${scale})`;
 }, 280);// مدة التأثير كل 100 مللي ثانية
 
+    document.querySelectorAll('.clickable-image img').forEach(image => {
+        image.addEventListener('click', function (event) {
+            const rect = this.getBoundingClientRect();
+            const x = event.clientX - rect.left; // تحديد موضع النقر الأفقي
+            const y = event.clientY - rect.top;  // تحديد موضع النقر العمودي
+            
+            // تحويل النسب (x, y) إلى نسبة مئوية
+            const offsetX = (x / rect.width - 0.5) * 10; // التأثير عند النقر
+            const offsetY = (y / rect.height - 0.5) * 10;
+
+            this.style.transform = `scale(0.95) translate(${offsetX}px, ${offsetY}px)`;
+            this.classList.add('active');
+            
+            // إعادة الصورة لوضعها الأصلي بعد النقر
+            setTimeout(() => {
+                this.style.transform = '';
+                this.classList.remove('active');
+            }, 200);
+        });
+    });
+
+
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {
     const telegramApp = window.Telegram.WebApp;

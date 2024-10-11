@@ -743,34 +743,6 @@ setInterval(() => {
 }, 280);// مدة التأثير كل 100 مللي ثانية
 
 
-    document.querySelectorAll('.clickable-image img').forEach(image => {
-    image.addEventListener('click', function (event) {
-        const rect = this.getBoundingClientRect();
-        const x = event.clientX - rect.left; // موقع النقر على المحور الأفقي
-        const y = event.clientY - rect.top;  // موقع النقر على المحور العمودي
-        
-        // حساب النسب من المركز لتحديد اتجاه الدوران
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const deltaX = x - centerX;
-        const deltaY = y - centerY;
-        
-        // حساب مقدار الدوران
-        const rotationAngle = (deltaX + deltaY) * 0.05; // تعديل زاوية الدوران بناءً على موقع النقر
-
-        // تطبيق الدوران حول مركز الصورة
-        this.style.transform = `rotateX(${deltaY * 0.2}deg) rotateY(${deltaX * -0.2}deg)`;
-        this.classList.add('active');
-        
-        // إعادة الصورة لوضعها الأصلي بعد النقر
-        setTimeout(() => {
-            this.style.transform = '';
-            this.classList.remove('active');
-        }, 500); // نصف ثانية لرجوع الصورة
-    });
-});
-
-
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {
     const telegramApp = window.Telegram.WebApp;

@@ -766,6 +766,7 @@ body {
     font-size: 14px;
     margin: 10px 2px;
     cursor: pointer;
+    z-index: 50;  
 }
 
 .boosts-button:hover {

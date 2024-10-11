@@ -175,7 +175,7 @@ body {
 #balanceTitle {
     font-weight: bold;
     margin-bottom: 7px;
-    font-size: 20px; /* Larger font for balance title */
+    font-size: 18px; /* Larger font for balance title */
     color: #fff; 
     display: block;
     /*border-bottom: 2px solid #fff;*/
@@ -216,7 +216,7 @@ body {
 }
 
 #energyInfo {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     color: #fff;
     position: relative;
@@ -335,9 +335,9 @@ body {
 }
  
 .menu button img {
-    width: 32px;
-    height: 32px;
-    margin-bottom: 2px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 3px;
 }
 
 .menu button:hover {
@@ -348,7 +348,7 @@ body {
 .menu button.active {
     transform: scale(1.2);
     border: 2px solid #fff;
-    border-radius: 25px;
+    border-radius: 12px;
 }
 
 #accountPage {

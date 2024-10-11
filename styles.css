@@ -220,7 +220,7 @@ body {
     font-weight: bold;
     color: #fff;
     position: relative;
-    top: -10px; /* رفع النص قليلاً */
+    top: -9px; /* رفع النص قليلاً */
     text-align: left; /* محاذاة النص لليسار */
     margin-left: 0; /* عدم إضافة مسافة إلى اليمين */
     direction: rtl; /* لضمان أن النص يبدأ من اليسار في اللغات العربية */
@@ -638,7 +638,7 @@ body {
 
 .wallet-container {
     display: flex;
-    flex-direction: center;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -648,6 +648,7 @@ body {
 .wallet-image {
     width: 120px;
     height: auto;
+    margin-bottom: 20px; 
 } 
 
 .wallet-button {
@@ -713,8 +714,8 @@ body {
 
 .level-button-floating {
     position: fixed;
-    top: 25px; 
-    left: 146px;
+    top: 26px; 
+    left: 147px;
     background-color: transparent;
     color: #fff; 
     padding: 3px 5px;
@@ -753,11 +754,11 @@ body {
 .boosts-button {
     position: absolute;
     top: 440px; /* غير هذا الرقم حسب الحاجة لضبط المكان */
-    right: 15px; /* المسافة من الجانب الأيمن */
+    right: 10px; /* المسافة من الجانب الأيمن */
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border: 2px solid #343434;
-    padding: 10px 7px;
+    padding: 10px 8px;
     border-radius: 15px; 
     text-align: center;
     text-decoration: none;

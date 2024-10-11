@@ -57,6 +57,10 @@ const uiElements = {
 
 };
 
+function navigateToBoosts() {
+       document.querySelector('[data-target="boostsPage"]').click();
+    }
+
 // حالة اللعبة
 let gameState = {
     balance: 0,
@@ -321,11 +325,6 @@ function registerEventHandlers() {
         uiElements.fillEnergyUpgradeBtn.addEventListener('click', () => {
             showUpgradeModal('energy');
         });
-    }
-
-
-       function navigateToBoosts() {
-       document.querySelector('[data-target="boostsPage"]').click();
     }
 
     if (uiElements.taskTwoBtn) {

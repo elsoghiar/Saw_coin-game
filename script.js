@@ -305,6 +305,13 @@ function registerEventHandlers() {
         uiElements.fillEnergyBtn.addEventListener('click', fillEnergyAction);
     }
 
+      const boostsButton = document.getElementById('boostsButton');  // إضافة زر Boosts
+if (boostsButton) {
+    boostsButton.addEventListener('click', () => {
+        document.querySelector('[data-target="boostsPage"]').click();  // التنقل إلى صفحة Boosts
+    });
+}
+    
     if (uiElements.boostUpgradeBtn) {
         uiElements.boostUpgradeBtn.addEventListener('click', () => {
             showUpgradeModal('boost');

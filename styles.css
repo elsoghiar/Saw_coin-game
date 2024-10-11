@@ -231,7 +231,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(97.5% - 69px);
+    height: calc(96.5% - 69px);
 }
 
 .clickable-image {
@@ -342,7 +342,7 @@ body {
 
 .menu button:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid #343434;
+    /*border: 2px solid #343434;*/
 }
 
 .menu button.active {

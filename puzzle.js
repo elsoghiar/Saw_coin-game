@@ -102,7 +102,7 @@ function handlePuzzleSuccess() {
 
     // إضافة المكافأة إلى رصيد اللاعب
     gameState.balance += puzzleReward;
-    updateUserData(puzzleReward); // تحديث الرصيد في قاعدة البيانات
+    saveGameState(puzzleReward); // تحديث الرصيد في قاعدة البيانات
     updateUI();
 
     closePuzzleBtn.classList.remove('hidden'); // إظهار زر إغلاق الأحجية
@@ -116,7 +116,7 @@ function handlePuzzleWrongAnswer() {
     if (attempts === maxAttempts) {
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
         gameState.balance -= penaltyAmount; // خصم 500 عملة من الرصيد
-        updateUserData(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
+        saveGameState(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
         updateUI();
         closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
     } else {
@@ -126,14 +126,14 @@ function handlePuzzleWrongAnswer() {
 
 // دالة لتحديث الرصيد في قاعدة البيانات
 async function updateBalanceInDB(amount) {
-    const telegram_id = gameState.telegram_id; // الحصول على معرف المستخدم من حالة اللعبة
+    const userid = gameState.balance; // الحصول على معرف المستخدم من حالة اللعبة
 
     try {
         // تحديث الرصيد في قاعدة البيانات
         const { error } = await supabase
             .from('users')
             .update({ balance: gameState.balance })
-            .eq('telegram_id', telegram_id);
+            .eq('telegram_id', userTelegramId);
 
         if (error) {
             console.error('Error updating balance:', error);
@@ -185,5 +185,5 @@ function saveGameState() {
 // Sample gameState for testing
 let gameState = {
     balance: 10000,  // Starting balance for testing
-    telegram_id: 123 // معرف المستخدم لتحديث قاعدة البيانات
+    userTelegramId: 123 // معرف المستخدم لتحديث قاعدة البيانات
 };

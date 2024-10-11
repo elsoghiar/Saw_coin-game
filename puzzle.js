@@ -129,7 +129,7 @@ function updateRemainingAttempts() {
 
 // تحديث الرصيد
 function updateBalance(amount) {
-    gameState.balance += reward;
+    gameState.balance += amount;
     updateBalanceInDB(amount)
         .then(() => {
             updateUI(); // تحديث واجهة المستخدم بعد التحديث

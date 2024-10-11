@@ -231,7 +231,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(97.5% - 69px);
+    flex: 1;
 }
 
 .clickable-image {

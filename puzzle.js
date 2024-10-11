@@ -25,6 +25,9 @@ const puzzleNotification = document.getElementById('puzzleNotification');
 const puzzleHint = document.getElementById('puzzleHint');
 const timerDisplay = document.getElementById('timer');
 const closePuzzleBtn = document.getElementById('closePuzzleBtn');
+const remainingAttemptsDisplay = document.createElement('div'); // مكان عرض المحاولات المتبقية
+remainingAttemptsDisplay.id = 'remainingAttempts';
+document.querySelector('.puzzle-content').appendChild(remainingAttemptsDisplay); // إضافة عرض المحاولات المتبقية
 
 // حالة اللعبة
 let currentPuzzle;
@@ -50,6 +53,7 @@ async function displayTodaysPuzzle() {
 
     puzzleContainer.classList.remove('hidden'); // إظهار الأحجية
     closePuzzleBtn.classList.add('hidden'); // إخفاء زر الإغلاق حتى يتم الحل
+    updateRemainingAttempts(); // تحديث عرض المحاولات المتبقية
     startCountdown(); // بدء العداد
 }
 
@@ -107,6 +111,7 @@ function handlePuzzleSuccess() {
 // التعامل مع الإجابة الخاطئة
 function handlePuzzleWrongAnswer() {
     attempts++; // زيادة عدد المحاولات
+    updateRemainingAttempts(); // تحديث المحاولات المتبقية
 
     if (attempts === maxAttempts) {
         clearInterval(countdownInterval); // إيقاف المؤقت بعد الخسارة
@@ -116,6 +121,11 @@ function handlePuzzleWrongAnswer() {
     } else {
         showNotification(puzzleNotification, `Wrong answer. You have ${maxAttempts - attempts} attempts remaining.`);
     }
+}
+
+// تحديث عرض المحاولات المتبقية
+function updateRemainingAttempts() {
+    remainingAttemptsDisplay.innerText = `Attempts remaining: ${maxAttempts - attempts}`;
 }
 
 // تحديث الرصيد

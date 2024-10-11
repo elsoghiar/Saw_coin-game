@@ -26,13 +26,6 @@ const maxAttempts = 3;
 const puzzleReward = 500000;
 const penaltyAmount = 500;
 
-// الحالة العامة للعبة (gameState)
-let gameState = {
-    balance: 10000,  // رصيد المستخدم الحالي
-    userTelegramId: 123, // معرف المستخدم
-    userTelegramName: 'test_user' // اسم المستخدم للعرض
-};
-
 // تحميل الأحجية من ملف JSON
 async function loadPuzzles() {
     try {

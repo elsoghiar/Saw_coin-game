@@ -54,20 +54,8 @@ const uiElements = {
     fillEnergyUpgradeBtn: document.getElementById('fillEnergyBtn'),
     inviteFriendsBtn: document.getElementById('inviteFriendsBtn'),
     copyInviteLinkBtn: document.getElementById('copyInviteLinkBtn'),
-    puzzleContainer: document.getElementById('puzzleContainer'),
-    openPuzzleBtn: document.getElementById('openPuzzleBtn'),
-    puzzleQuestion: document.getElementById('puzzleQuestion'),
-    puzzleOptions: document.getElementById('puzzleOptions'),
-    puzzleNotification: document.getElementById('puzzleNotification'),
-    puzzleHint: document.getElementById('puzzleHint'),
-    timerDisplay: document.getElementById('timer'),
-    closePuzzleBtn: document.getElementById('closePuzzleBtn'),
-    remainingAttemptsDisplay: document.createElement('div') // مكان عرض المحاولات المتبقية
-};
 
-// إضافة عرض المحاولات المتبقية إلى DOM
-uiElements.remainingAttemptsDisplay.id = 'remainingAttempts';
-document.querySelector('.puzzle-content').appendChild(uiElements.remainingAttemptsDisplay);
+};
 
 // حالة اللعبة
 let gameState = {

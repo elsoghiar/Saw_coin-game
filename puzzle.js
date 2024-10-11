@@ -74,12 +74,17 @@ function handlePuzzleTimeout() {
     gameState.balance -= penaltyAmount; // خصم العملات
     updateBalanceInDB(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
     updateUI();
-    closePuzzleBtn.classList.remove('hidden'); // إظهار زر الإغلاق
-    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // تعطيل الأزرار
+    closePuzzle(); // إغلاق الأحجية بعد انتهاء الوقت
 }
 
 // التحقق من إجابة المستخدم
 function checkPuzzleAnswer(selectedOption) {
+    if (puzzleSolved || attempts >= maxAttempts) {
+        // إذا كان المستخدم قد استنفذ المحاولات أو حل الأحجية
+        showNotification(puzzleNotification, 'You have failed. Please try again later.');
+        return; // عدم السماح بالمزيد من النقرات
+    }
+
     const userAnswer = selectedOption.innerText.trim(); // الحصول على نص الزر المختار
 
     if (userAnswer === currentPuzzle.answer && !puzzleSolved) {
@@ -108,27 +113,15 @@ function handlePuzzleSuccess() {
 function handlePuzzleWrongAnswer() {
     attempts++; // زيادة عدد المحاولات
 
-    if (attempts === 2) {
-        showNotification(puzzleNotification, 'You have one more attempt, if you fail, 500 coins will be deducted.');
-    } else if (attempts === maxAttempts) {
+    if (attempts === maxAttempts) {
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
         gameState.balance -= penaltyAmount; // خصم 500 عملة من الرصيد
         updateBalanceInDB(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
         updateUI();
-        document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // تعطيل الأزرار بعد الفشل
-        closePuzzleBtn.classList.remove('hidden'); // إظهار زر الإغلاق
+        closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
     } else {
-        showNotification(puzzleNotification, 'Wrong answer. Try again.');
+        showNotification(puzzleNotification, `Wrong answer. You have ${maxAttempts - attempts} attempts remaining.`);
     }
-}
-
-// دالة لإظهار الإشعارات
-function showNotification(notificationElement, message) {
-    notificationElement.innerText = message; // تعيين نص الإشعار
-    notificationElement.classList.add('show'); // إظهار الإشعار
-    setTimeout(() => {
-        notificationElement.classList.remove('show'); // إخفاء الإشعار بعد 3 ثوانٍ
-    }, 3000);
 }
 
 // دالة لتحديث الرصيد في قاعدة البيانات
@@ -140,7 +133,7 @@ async function updateBalanceInDB(amount) {
         const { error } = await supabase
             .from('users')
             .update({ balance: gameState.balance })
-            .eq('telegram_id', userId);
+            .eq('id', userId);
 
         if (error) {
             console.error('Error updating balance:', error);
@@ -149,6 +142,15 @@ async function updateBalanceInDB(amount) {
     } catch (error) {
         console.error('Database error:', error);
     }
+}
+
+// دالة لإظهار الإشعارات
+function showNotification(notificationElement, message) {
+    notificationElement.innerText = message; // تعيين نص الإشعار
+    notificationElement.classList.add('show'); // إظهار الإشعار
+    setTimeout(() => {
+        notificationElement.classList.remove('show'); // إخفاء الإشعار بعد 3 ثوانٍ
+    }, 3000);
 }
 
 // دالة لإغلاق الأحجية وإعادة تعيين الحالة
@@ -183,5 +185,5 @@ function saveGameState() {
 // Sample gameState for testing
 let gameState = {
     balance: 10000,  // Starting balance for testing
-    telegram_id: 123 // معرف المستخدم لتحديث قاعدة البيانات
+    userId: 123 // معرف المستخدم لتحديث قاعدة البيانات
 };

@@ -1,8 +1,8 @@
 // دالة لإضافة المكافأة إلى رصيد المستخدم وتحديث الواجهة
 function addCoins(reward) {
-    let currentCoins = parseInt(localStorage.getItem('userCoins') || '0');
+    let currentCoins = parseInt(localStorage.getItem('balance') || '0');
     currentCoins += parseInt(reward);
-    localStorage.setItem('userCoins', currentCoins);
+    localStorage.setItem('balance', currentCoins);
 
     // تحديث واجهة المستخدم لإظهار الرصيد الجديد
     const userBalanceElement = document.getElementById('balanceAmount');
@@ -89,6 +89,6 @@ function loadGameState() {
     const savedState = localStorage.getItem('gameState');
     if (savedState) {
         const gameState = JSON.parse(savedState);
-        document.getElementById('userBalance').textContent = `Your new balance: ${gameState.coins} coins`;
+        document.getElementById('Balance').textContent = `Your new balance: ${gameState.balance} coins`;
     }
 }

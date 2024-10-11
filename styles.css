@@ -643,13 +643,12 @@ body {
     justify-content: center;
     text-align: center;
     padding: 20px;
-    height: 100vh;
 }
 
 .wallet-image {
     width: 120px;
     height: auto;
-    margin-bottom: 20px; 
+    margin-bottom: 10px; 
 } 
 
 .wallet-button {

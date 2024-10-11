@@ -220,7 +220,7 @@ body {
     font-weight: bold;
     color: #fff;
     position: relative;
-    top: 1px; /* رفع النص قليلاً */
+    top: 5px; /* رفع النص قليلاً */
     text-align: left; /* محاذاة النص لليسار */
     margin-left: 0; /* عدم إضافة مسافة إلى اليمين */
     direction: rtl; /* لضمان أن النص يبدأ من اليسار في اللغات العربية */

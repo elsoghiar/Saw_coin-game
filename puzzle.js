@@ -194,5 +194,4 @@ function updateUI() {
 // Sample gameState for testing
 let gameState = {
     balance: 0,  // Starting balance for testing
-    userTelegramId:'' // معرف المستخدم لتحديث قاعدة البيانات
 };

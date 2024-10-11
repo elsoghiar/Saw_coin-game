@@ -768,6 +768,10 @@ body {
     cursor: pointer;
 }
 
+.boosts-button:hover {
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
+}
+ 
 .boosts-button img {
     width: 28px;
     height: 28px;

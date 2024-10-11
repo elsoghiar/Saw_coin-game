@@ -141,8 +141,9 @@ function updateBalance(amount) {
 }
 
 // دالة لتحديث الرصيد في قاعدة البيانات
-async function updateBalanceInDB(amount) {
-    try {
+async function updateUserData() {
+    const userId = uiElements.userTelegramIdDisplay.innerText;
+    
         const { error } = await supabase
             .from('users')
             .update({ balance: gameState.balance })
@@ -190,9 +191,3 @@ closePuzzleBtn.addEventListener('click', closePuzzle); // إغلاق الأحج�
 function updateUI() {
     document.getElementById('balanceDisplay').innerText = gameState.balance.toLocaleString(); // عرض الرصيد الحالي
 }
-
-// Sample gameState for testing
-let gameState = {
-    balance: 10000,  // Starting balance for testing
-    userTelegramId: 123 // معرف المستخدم لتحديث قاعدة البيانات
-};

@@ -234,25 +234,21 @@ body {
     height: calc(97.5% - 69px);
 }
 
+/* لجعل الصورة تحتل كامل الحاوية */
 .clickable-image {
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
+    overflow: hidden; /* لضمان عدم خروج الصورة عن الحاوية */
 }
 
 .clickable-image img {
-    width: 360px;
-    height: 360px;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: 100%; /* لضمان ملء كامل الحاوية */
+    height: 100%;
+    object-fit: cover; /* لتغطية كامل الحاوية مع الحفاظ على نسبة الأبعاد */
     transition: transform 0.2s ease-in-out, filter 0.3s ease-in-out;
     cursor: pointer;
-    margin-top: -20px; 
-    transform: translateY(-5px);
-    border-radius: 50%;
-    
 }
 
 .clickable-image img:active {
@@ -260,6 +256,7 @@ body {
     filter: brightness(1.1);
 }
 
+/* تأثير Bounce */
 @keyframes coin-bounce {
     0%, 100% {
         transform: translateY(0);
@@ -268,6 +265,7 @@ body {
         transform: translateY(-15px);
     }
 }
+
 
 .diamond-coin {
     position: absolute;

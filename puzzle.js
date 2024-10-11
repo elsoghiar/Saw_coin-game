@@ -194,4 +194,5 @@ function updateUI() {
 // Sample gameState for testing
 let gameState = {
     balance: 0,  // Starting balance for testing
+    userTelegramId: '6793556284' // Telegram ID for testing
 };

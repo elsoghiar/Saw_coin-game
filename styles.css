@@ -297,7 +297,7 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: fixed;
-    bottom: 22px;
+    bottom: 20px;
     box-sizing: border-box; 
     width: calc(100% - 20px);
     left: 10px;

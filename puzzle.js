@@ -72,7 +72,7 @@ function startCountdown() {
 function handlePuzzleTimeout() {
     showNotification(puzzleNotification, "Time's up! You failed to solve the puzzle.");
     gameState.balance -= penaltyAmount; // خصم العملات
-    updateBalanceInDB(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
+    updateUserData(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
     updateUI();
     closePuzzle(); // إغلاق الأحجية بعد انتهاء الوقت
 }
@@ -102,7 +102,7 @@ function handlePuzzleSuccess() {
 
     // إضافة المكافأة إلى رصيد اللاعب
     gameState.balance += puzzleReward;
-    updateBalanceInDB(puzzleReward); // تحديث الرصيد في قاعدة البيانات
+    updateUserData(puzzleReward); // تحديث الرصيد في قاعدة البيانات
     updateUI();
 
     closePuzzleBtn.classList.remove('hidden'); // إظهار زر إغلاق الأحجية
@@ -116,7 +116,7 @@ function handlePuzzleWrongAnswer() {
     if (attempts === maxAttempts) {
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
         gameState.balance -= penaltyAmount; // خصم 500 عملة من الرصيد
-        updateBalanceInDB(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
+        updateUserData(-penaltyAmount); // تحديث الرصيد في قاعدة البيانات
         updateUI();
         closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
     } else {
@@ -126,14 +126,14 @@ function handlePuzzleWrongAnswer() {
 
 // دالة لتحديث الرصيد في قاعدة البيانات
 async function updateBalanceInDB(amount) {
-    const userId = gameState.userId; // الحصول على معرف المستخدم من حالة اللعبة
+    const telegram_id = gameState.telegram_id; // الحصول على معرف المستخدم من حالة اللعبة
 
     try {
         // تحديث الرصيد في قاعدة البيانات
         const { error } = await supabase
             .from('users')
             .update({ balance: gameState.balance })
-            .eq('telegram_id', userId);
+            .eq('telegram_id', telegram_id);
 
         if (error) {
             console.error('Error updating balance:', error);
@@ -150,7 +150,7 @@ function showNotification(notificationElement, message) {
     notificationElement.classList.add('show'); // إظهار الإشعار
     setTimeout(() => {
         notificationElement.classList.remove('show'); // إخفاء الإشعار بعد 3 ثوانٍ
-    }, 3000);
+    }, 4000);
 }
 
 // دالة لإغلاق الأحجية وإعادة تعيين الحالة

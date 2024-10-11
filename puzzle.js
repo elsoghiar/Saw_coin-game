@@ -2,12 +2,12 @@
 async function loadPuzzles() {
     try {
         const response = await fetch('puzzles.json'); // جلب الأحجيات من ملف JSON
-        if (!response.ok) throw new Error('Failed to load puzzles');
+        if (!response.ok) throw new Error('فشل تحميل الأحجيات');
         const data = await response.json();
         return data.puzzles;
     } catch (error) {
         console.error(error);
-        showNotification(puzzleNotification, 'Error loading puzzle. Please try again later.');
+        showNotification(puzzleNotification, 'خطأ في تحميل الأحجية. حاول مرة أخرى لاحقًا.');
     }
 }
 
@@ -76,7 +76,7 @@ function startCountdown() {
 // التعامل مع انتهاء الوقت
 function handlePuzzleTimeout() {
     clearInterval(countdownInterval); // إيقاف المؤقت
-    showNotification(puzzleNotification, "Time's up! You failed to solve the puzzle.");
+    showNotification(puzzleNotification, "انتهى الوقت! لم تتمكن من حل الأحجية.");
     updateBalance(-penaltyAmount); // خصم العملات
     closePuzzle(); // إغلاق الأحجية بعد انتهاء الوقت
 }
@@ -84,8 +84,8 @@ function handlePuzzleTimeout() {
 // التحقق من إجابة المستخدم
 function checkPuzzleAnswer(selectedOption) {
     if (puzzleSolved || attempts >= maxAttempts) {
-        // إذا كان المستخدم قد استنفذ المحاولات أو حل الأحجية
-        showNotification(puzzleNotification, puzzleSolved ? 'You have already solved this puzzle.' : 'You have failed. Please try again later.');
+        // إذا كان المستخدم قد استنفد المحاولات أو حل الأحجية
+        showNotification(puzzleNotification, puzzleSolved ? 'لقد قمت بحل هذه الأحجية بالفعل.' : 'لقد فشلت. حاول مرة أخرى لاحقًا.');
         return; // عدم السماح بالمزيد من النقرات
     }
 
@@ -102,7 +102,7 @@ function checkPuzzleAnswer(selectedOption) {
 function handlePuzzleSuccess() {
     clearInterval(countdownInterval); // إيقاف العداد
     puzzleSolved = true; // تحديث حالة الأحجية
-    showNotification(puzzleNotification, `Correct! You've earned ${puzzleReward} coins.`); // عرض إشعار الفوز
+    showNotification(puzzleNotification, `صحيح! لقد ربحت ${puzzleReward} عملة.`); // عرض إشعار الفوز
     updateBalance(puzzleReward); // إضافة المكافأة
     closePuzzleBtn.classList.remove('hidden'); // إظهار زر إغلاق الأحجية
     document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // تعطيل الأزرار بعد الفوز
@@ -115,46 +115,41 @@ function handlePuzzleWrongAnswer() {
 
     if (attempts === maxAttempts) {
         clearInterval(countdownInterval); // إيقاف المؤقت بعد الخسارة
-        showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
+        showNotification(puzzleNotification, 'لقد استخدمت جميع المحاولات. تم خصم 500 عملة.');
         updateBalance(-penaltyAmount); // خصم العملات
         closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
     } else {
-        showNotification(puzzleNotification, `Wrong answer. You have ${maxAttempts - attempts} attempts remaining.`);
+        showNotification(puzzleNotification, `إجابة خاطئة. لديك ${maxAttempts - attempts} محاولات متبقية.`);
     }
 }
 
 // تحديث عرض المحاولات المتبقية
 function updateRemainingAttempts() {
-    remainingAttemptsDisplay.innerText = `Attempts remaining: ${maxAttempts - attempts}`;
+    remainingAttemptsDisplay.innerText = `المحاولات المتبقية: ${maxAttempts - attempts}`;
 }
 
 // تحديث الرصيد
-function updateBalance(amount) {
+async function updateBalance(amount) {
     gameState.balance += amount;
-    updateBalanceInDB(amount)
-        .then(() => {
-            updateUI(); // تحديث واجهة المستخدم بعد تحديث الرصيد بنجاح
-        })
-        .catch(() => {
-            showNotification(puzzleNotification, 'Error updating balance. Please try again later.');
-        });
+    try {
+        await updateUserData(); // تحديث الرصيد في قاعدة البيانات
+        updateUI(); // تحديث واجهة المستخدم بعد تحديث الرصيد بنجاح
+    } catch (error) {
+        showNotification(puzzleNotification, 'خطأ في تحديث الرصيد. حاول مرة أخرى لاحقًا.');
+    }
 }
 
 // دالة لتحديث الرصيد في قاعدة البيانات
 async function updateUserData() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
-    
-        const { error } = await supabase
-            .from('users')
-            .update({ balance: gameState.balance })
-            .eq('telegram_id', gameState.userTelegramId);
 
-        if (error) {
-            throw new Error('Error updating balance');
-        }
-    } catch (error) {
-        console.error('Database error:', error);
-        throw error;
+    const { error } = await supabase
+        .from('users')
+        .update({ balance: gameState.balance })
+        .eq('telegram_id', gameState.userTelegramId);
+
+    if (error) {
+        throw new Error('خطأ في تحديث الرصيد');
     }
 }
 

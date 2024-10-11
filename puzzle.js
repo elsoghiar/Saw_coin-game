@@ -133,7 +133,7 @@ async function updateBalanceInDB(amount) {
         const { error } = await supabase
             .from('users')
             .update({ balance: gameState.balance })
-            .eq('id', userId);
+            .eq('telegram_id', userId);
 
         if (error) {
             console.error('Error updating balance:', error);
@@ -185,5 +185,5 @@ function saveGameState() {
 // Sample gameState for testing
 let gameState = {
     balance: 10000,  // Starting balance for testing
-    userId: 123 // معرف المستخدم لتحديث قاعدة البيانات
+    telegram_id: 123 // معرف المستخدم لتحديث قاعدة البيانات
 };

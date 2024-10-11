@@ -1,9 +1,3 @@
-// Import Supabase client
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js'; // تأكد من أن لديك هذا الملف
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
 // تعريف عناصر DOM
 const puzzleContainer = document.getElementById('puzzleContainer');
 const openPuzzleBtn = document.getElementById('openPuzzleBtn');
@@ -83,7 +77,7 @@ function startCountdown() {
 function handlePuzzleTimeout() {
     clearInterval(countdownInterval);
     showNotification(puzzleNotification, "Time's up! You failed to solve the puzzle.");
-    updateBalance(-penaltyAmount); // خصم العملات عند انتهاء الوقت
+    saveGameState(-penaltyAmount); // خصم العملات عند انتهاء الوقت
     closePuzzle();
 }
 
@@ -108,7 +102,7 @@ function handlePuzzleSuccess() {
     clearInterval(countdownInterval);
     puzzleSolved = true;
     showNotification(puzzleNotification, `Correct! You've earned ${puzzleReward} coins.`);
-    updateBalance(puzzleReward); // إضافة المكافأة
+    saveGameState(puzzleReward); // إضافة المكافأة
     closePuzzleBtn.classList.remove('hidden');
     document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
 }
@@ -121,7 +115,7 @@ function handlePuzzleWrongAnswer() {
     if (attempts === maxAttempts) {
         clearInterval(countdownInterval);
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
-        updateBalance(-penaltyAmount); // خصم العملات
+        saveGameState(-penaltyAmount); // خصم العملات
         closePuzzle();
     } else {
         showNotification(puzzleNotification, `Wrong answer. You have ${maxAttempts - attempts} attempts remaining.`);
@@ -135,7 +129,7 @@ function updateRemainingAttempts() {
 
 // تحديث الرصيد
 function updateBalance(amount) {
-    gameState.balance += amount;
+    gameState.balance += reward;
     updateBalanceInDB(amount)
         .then(() => {
             updateUI(); // تحديث واجهة المستخدم بعد التحديث

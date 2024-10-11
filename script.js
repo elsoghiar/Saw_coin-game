@@ -508,7 +508,6 @@ function navigateToScreen(screenId) {
             screen.classList.remove('active');
         });
     }
-    
     const targetScreen = document.getElementById(screenId);
     if (targetScreen) targetScreen.classList.add('active');
 
@@ -522,16 +521,6 @@ function navigateToScreen(screenId) {
         if (uiElements.fillEnergyUpgradeBtn) uiElements.fillEnergyUpgradeBtn.style.display = 'none';
     }
 }
-
-document.querySelectorAll('button[data-target]').forEach(button => {
-    button.addEventListener('click', () => {
-        const targetId = button.getAttribute('data-target');
-        document.querySelectorAll('.screen-content').forEach(screen => {
-            screen.classList.remove('active');
-        });
-        document.getElementById(targetId).classList.add('active');
-    });
-});
 
 // بدء استعادة الطاقة تلقائياً
 function startEnergyRecovery() {
@@ -755,6 +744,16 @@ setInterval(() => {
     inviteButton.style.transform = `scale(${scale})`;
 }, 280);// مدة التأثير كل 100 مللي ثانية
 
+
+document.querySelectorAll('button[data-target]').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        document.querySelectorAll('.screen-content').forEach(screen => {
+            screen.classList.remove('active');
+        });
+        document.getElementById(targetId).classList.add('active');
+    });
+});
 
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {

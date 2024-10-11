@@ -512,14 +512,12 @@ function navigateToScreen(screenId) {
     if (targetScreen) targetScreen.classList.add('active');
 
     if (screenId === 'boostsPage') {
+        
         if (uiElements.boostUpgradeBtn) uiElements.boostUpgradeBtn.style.display = 'block';
         if (uiElements.coinUpgradeBtn) uiElements.coinUpgradeBtn.style.display = 'block';
         if (uiElements.fillEnergyUpgradeBtn) uiElements.fillEnergyUpgradeBtn.style.display = 'block';
-    } else {
-        if (uiElements.boostUpgradeBtn) uiElements.boostUpgradeBtn.style.display = 'none';
-        if (uiElements.coinUpgradeBtn) uiElements.coinUpgradeBtn.style.display = 'none';
-        if (uiElements.fillEnergyUpgradeBtn) uiElements.fillEnergyUpgradeBtn.style.display = 'none';
     }
+    
 }
 
 // بدء استعادة الطاقة تلقائياً

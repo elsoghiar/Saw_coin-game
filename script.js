@@ -522,6 +522,16 @@ function navigateToScreen(screenId) {
     }
 }
 
+       document.querySelectorAll('button[data-target]').forEach(button => {
+       button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        document.querySelectorAll('.screen-content').forEach(screen => {
+            screen.classList.remove('active');
+        });
+        document.getElementById(targetId).classList.add('active');
+    });
+});
+
 // بدء استعادة الطاقة تلقائياً
 function startEnergyRecovery() {
     setInterval(() => {

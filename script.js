@@ -636,15 +636,16 @@ async function loadFriendsList() {
 
 // تحديث تقدم المهام
 function updateTasksProgress() {
+    const friendsCount = gameState.friends.length || 0;  // استخدم 0 إذا لم يكن هناك أصدقاء
     if (uiElements.taskTwoProgress) {
-        uiElements.taskTwoProgress.innerText = `${gameState.friends.length}/3`;
+        uiElements.taskTwoProgress.innerText = `${friendsCount}/3`;
     }
     if (uiElements.taskThreeProgress) {
-        uiElements.taskThreeProgress.innerText = `${gameState.friends.length}/10`;
+        uiElements.taskThreeProgress.innerText = `${friendsCount}/10`;
     }
 
-    updateTaskBtnState(uiElements.taskTwoBtn, gameState.friends.length >= 3);
-    updateTaskBtnState(uiElements.taskThreeBtn, gameState.friends.length >= 10);
+    updateTaskBtnState(uiElements.taskTwoBtn, friendsCount >= 3);
+    updateTaskBtnState(uiElements.taskThreeBtn, friendsCount >= 10);
 }
 
 // تحديث حالة زر المهمة
@@ -739,8 +740,7 @@ setInterval(() => {
         if (scale <= 1) growing = true; // الحد الأدنى للانخفاض
     }
     inviteButton.style.transform = `scale(${scale})`;
-}, 250); // مدة التأثير كل 100 مللي ثانية
-
+}, 280);// مدة التأثير كل 100 مللي ثانية
 
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {

@@ -1,7 +1,42 @@
+// Import Supabase client
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from './config.js'; // تأكد من أن لديك هذا الملف
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// تعريف عناصر DOM
+const puzzleContainer = document.getElementById('puzzleContainer');
+const openPuzzleBtn = document.getElementById('openPuzzleBtn');
+const puzzleQuestion = document.getElementById('puzzleQuestion');
+const puzzleOptions = document.getElementById('puzzleOptions');
+const puzzleNotification = document.getElementById('puzzleNotification');
+const puzzleHint = document.getElementById('puzzleHint');
+const timerDisplay = document.getElementById('timer');
+const closePuzzleBtn = document.getElementById('closePuzzleBtn');
+const remainingAttemptsDisplay = document.createElement('div');
+remainingAttemptsDisplay.id = 'remainingAttempts';
+document.querySelector('.puzzle-content').appendChild(remainingAttemptsDisplay);
+
+// حالة اللعبة للأحجية
+let currentPuzzle;
+let attempts = 0;
+let puzzleSolved = false;
+let countdownInterval;
+const maxAttempts = 3;
+const puzzleReward = 500000;
+const penaltyAmount = 500;
+
+// الحالة العامة للعبة (gameState)
+let gameState = {
+    balance: 10000,  // رصيد المستخدم الحالي
+    userTelegramId: 123, // معرف المستخدم
+    userTelegramName: 'test_user' // اسم المستخدم للعرض
+};
+
 // تحميل الأحجية من ملف JSON
 async function loadPuzzles() {
     try {
-        const response = await fetch('puzzles.json'); // جلب الأحجيات من ملف JSON
+        const response = await fetch('puzzles.json');
         if (!response.ok) throw new Error('Failed to load puzzles');
         const data = await response.json();
         return data.puzzles;
@@ -16,32 +51,10 @@ function getTodaysPuzzle(puzzles) {
     return puzzles[0]; // افتراضًا نختار أول أحجية
 }
 
-// تعريف عناصر DOM
-const puzzleContainer = document.getElementById('puzzleContainer');
-const openPuzzleBtn = document.getElementById('openPuzzleBtn');
-const puzzleQuestion = document.getElementById('puzzleQuestion');
-const puzzleOptions = document.getElementById('puzzleOptions');
-const puzzleNotification = document.getElementById('puzzleNotification');
-const puzzleHint = document.getElementById('puzzleHint');
-const timerDisplay = document.getElementById('timer');
-const closePuzzleBtn = document.getElementById('closePuzzleBtn');
-const remainingAttemptsDisplay = document.createElement('div'); // مكان عرض المحاولات المتبقية
-remainingAttemptsDisplay.id = 'remainingAttempts';
-document.querySelector('.puzzle-content').appendChild(remainingAttemptsDisplay); // إضافة عرض المحاولات المتبقية
-
-// حالة اللعبة
-let currentPuzzle;
-let attempts = 0; // عدد المحاولات
-let puzzleSolved = false; // إذا تم حل الأحجية أم لا
-let countdownInterval; // المؤقت
-const maxAttempts = 3; // الحد الأقصى للمحاولات
-const puzzleReward = 500000; // المكافأة عند الحل الصحيح
-const penaltyAmount = 500; // العقوبة عند الإجابة الخاطئة
-
 // تحميل الأحجية وعرضها
 async function displayTodaysPuzzle() {
-    const puzzles = await loadPuzzles(); // جلب الأحجيات
-    currentPuzzle = getTodaysPuzzle(puzzles); // الحصول على أحجية اليوم
+    const puzzles = await loadPuzzles();
+    currentPuzzle = getTodaysPuzzle(puzzles);
 
     // عرض السؤال والتلميح
     puzzleQuestion.innerText = currentPuzzle.question;
@@ -57,67 +70,66 @@ async function displayTodaysPuzzle() {
     startCountdown(); // بدء العداد
 }
 
-// دالة المؤقت
+// بدء المؤقت
 function startCountdown() {
-    let timeLeft = 60.00; // 60 ثانية
-    timerDisplay.innerText = timeLeft.toFixed(2); // عرض الوقت المتبقي
+    let timeLeft = 60.00;
+    timerDisplay.innerText = timeLeft.toFixed(2);
 
     countdownInterval = setInterval(() => {
         timeLeft -= 0.01;
         timerDisplay.innerText = timeLeft.toFixed(2);
 
         if (timeLeft <= 0) {
-            clearInterval(countdownInterval); // إيقاف العداد
-            handlePuzzleTimeout(); // انتهاء الوقت
+            clearInterval(countdownInterval);
+            handlePuzzleTimeout();
         }
-    }, 10); // تحديث كل 10 مللي ثانية
+    }, 10);
 }
 
 // التعامل مع انتهاء الوقت
 function handlePuzzleTimeout() {
-    clearInterval(countdownInterval); // إيقاف المؤقت
+    clearInterval(countdownInterval);
     showNotification(puzzleNotification, "Time's up! You failed to solve the puzzle.");
-    updateBalance(-penaltyAmount); // خصم العملات
-    closePuzzle(); // إغلاق الأحجية بعد انتهاء الوقت
+    updateBalance(-penaltyAmount); // خصم العملات عند انتهاء الوقت
+    closePuzzle();
 }
 
 // التحقق من إجابة المستخدم
 function checkPuzzleAnswer(selectedOption) {
     if (puzzleSolved || attempts >= maxAttempts) {
-        // إذا كان المستخدم قد استنفذ المحاولات أو حل الأحجية
         showNotification(puzzleNotification, puzzleSolved ? 'You have already solved this puzzle.' : 'You have failed. Please try again later.');
-        return; // عدم السماح بالمزيد من النقرات
+        return;
     }
 
-    const userAnswer = selectedOption.innerText.trim(); // الحصول على نص الزر المختار
+    const userAnswer = selectedOption.innerText.trim();
 
     if (userAnswer === currentPuzzle.answer && !puzzleSolved) {
-        handlePuzzleSuccess(); // التعامل مع الإجابة الصحيحة
+        handlePuzzleSuccess();
     } else {
-        handlePuzzleWrongAnswer(); // التعامل مع الإجابة الخاطئة
+        handlePuzzleWrongAnswer();
     }
 }
 
 // التعامل مع الإجابة الصحيحة
 function handlePuzzleSuccess() {
-    clearInterval(countdownInterval); // إيقاف العداد
-    puzzleSolved = true; // تحديث حالة الأحجية
-    showNotification(puzzleNotification, `Correct! You've earned ${puzzleReward} coins.`); // عرض إشعار الفوز
+    clearInterval(countdownInterval);
+    puzzleSolved = true;
+    showNotification(puzzleNotification, `Correct! You've earned ${puzzleReward} coins.`);
     updateBalance(puzzleReward); // إضافة المكافأة
-    closePuzzleBtn.classList.remove('hidden'); // إظهار زر إغلاق الأحجية
-    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true); // تعطيل الأزرار بعد الفوز
+    closePuzzleBtn.classList.remove('hidden');
+    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
 }
 
 // التعامل مع الإجابة الخاطئة
 function handlePuzzleWrongAnswer() {
-    attempts++; // زيادة عدد المحاولات
-    updateRemainingAttempts(); // تحديث المحاولات المتبقية
+    attempts++;
+    updateRemainingAttempts();
 
     if (attempts === maxAttempts) {
-        clearInterval(countdownInterval); // إيقاف المؤقت بعد الخسارة
+        clearInterval(countdownInterval);
         showNotification(puzzleNotification, 'You have used all attempts. 500 coins have been deducted.');
         updateBalance(-penaltyAmount); // خصم العملات
-        closePuzzle(); // إغلاق الأحجية بعد استنفاذ المحاولات
+        closePuzzle();
     } else {
         showNotification(puzzleNotification, `Wrong answer. You have ${maxAttempts - attempts} attempts remaining.`);
     }
@@ -133,14 +145,14 @@ function updateBalance(amount) {
     gameState.balance += amount;
     updateBalanceInDB(amount)
         .then(() => {
-            updateUI(); // تحديث واجهة المستخدم بعد تحديث الرصيد بنجاح
+            updateUI(); // تحديث واجهة المستخدم بعد التحديث
         })
         .catch(() => {
             showNotification(puzzleNotification, 'Error updating balance. Please try again later.');
         });
 }
 
-// دالة لتحديث الرصيد في قاعدة البيانات
+// تحديث الرصيد في قاعدة البيانات
 async function updateBalanceInDB(amount) {
     try {
         const { error } = await supabase
@@ -157,24 +169,29 @@ async function updateBalanceInDB(amount) {
     }
 }
 
+// إغلاق الأحجية وإعادة تعيين الحالة
+function closePuzzle() {
+    clearInterval(countdownInterval);
+    puzzleContainer.classList.add('hidden');
+    puzzleOptions.innerHTML = '';  
+    puzzleNotification.innerText = '';
+    closePuzzleBtn.classList.remove('hidden');
+    attempts = 0;
+    puzzleSolved = false;
+}
+
 // دالة لإظهار الإشعارات
 function showNotification(notificationElement, message) {
-    notificationElement.innerText = message; // تعيين نص الإشعار
-    notificationElement.classList.add('show'); // إظهار الإشعار
+    notificationElement.innerText = message;
+    notificationElement.classList.add('show');
     setTimeout(() => {
-        notificationElement.classList.remove('show'); // إخفاء الإشعار بعد 4 ثوانٍ
+        notificationElement.classList.remove('show');
     }, 4000);
 }
 
-// دالة لإغلاق الأحجية وإعادة تعيين الحالة
-function closePuzzle() {
-    clearInterval(countdownInterval); // إيقاف العداد إذا كان نشطًا
-    puzzleContainer.classList.add('hidden'); // إخفاء الأحجية
-    puzzleOptions.innerHTML = '';  // مسح الأزرار
-    puzzleNotification.innerText = ''; // مسح الإشعارات
-    closePuzzleBtn.classList.remove('hidden'); // إظهار زر الإغلاق
-    attempts = 0; // إعادة تعيين عدد المحاولات
-    puzzleSolved = false; // إعادة تعيين حالة الأحجية
+// تحديث واجهة المستخدم
+function updateUI() {
+    document.getElementById('balanceDisplay').innerText = gameState.balance.toLocaleString(); // عرض الرصيد
 }
 
 // ربط الأحداث مع الأزرار
@@ -183,16 +200,6 @@ puzzleOptions.addEventListener('click', function (event) {
         checkPuzzleAnswer(event.target); // التحقق من الإجابة عند الضغط على الزر
     }
 });
+
 openPuzzleBtn.addEventListener('click', displayTodaysPuzzle); // فتح الأحجية عند الضغط على الزر
 closePuzzleBtn.addEventListener('click', closePuzzle); // إغلاق الأحجية عند الضغط على زر الإغلاق
-
-// تحديث واجهة المستخدم
-function updateUI() {
-    document.getElementById('balanceDisplay').innerText = gameState.balance.toLocaleString(); // عرض الرصيد الحالي
-}
-
-// Sample gameState for testing
-let gameState = {
-    balance: 10000,  // Starting balance for testing
-    userTelegramId: 123 // معرف المستخدم لتحديث قاعدة البيانات
-};

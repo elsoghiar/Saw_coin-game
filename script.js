@@ -323,6 +323,11 @@ function registerEventHandlers() {
         });
     }
 
+
+       function navigateToBoosts() {
+       document.querySelector('[data-target="boostsPage"]').click();
+    }
+
     if (uiElements.taskTwoBtn) {
         uiElements.taskTwoBtn.addEventListener('click', () => claimTaskReward(3));
     }

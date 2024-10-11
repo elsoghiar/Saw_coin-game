@@ -304,13 +304,7 @@ function registerEventHandlers() {
     if (uiElements.fillEnergyBtn) {
         uiElements.fillEnergyBtn.addEventListener('click', fillEnergyAction);
     }
-
-      const boostsButton = document.getElementById('boostsButton');  // إضافة زر Boosts
-if (boostsButton) {
-    boostsButton.addEventListener('click', () => {
-        document.querySelector('[data-target="boostsPage"]').click();  // التنقل إلى صفحة Boosts
-    });
-}
+    
     
     if (uiElements.boostUpgradeBtn) {
         uiElements.boostUpgradeBtn.addEventListener('click', () => {
@@ -750,6 +744,14 @@ setInterval(() => {
     inviteButton.style.transform = `scale(${scale})`;
 }, 280);// مدة التأثير كل 100 مللي ثانية
 
+// إضافة حدث النقر على زر Boosts
+    const boostsButton = document.getElementById('boostsButton');  // احصل على زر Boosts
+    if (boostsButton) {
+        boostsButton.addEventListener('click', () => {
+            // الانتقال إلى صفحة Boosts
+            document.querySelector('[data-target="boostsPage"]').click();
+        });
+    }
 
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {

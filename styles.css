@@ -182,8 +182,8 @@ body {
 
 #balanceTitle {
     font-weight: bold;
-    margin-bottom: 7px;
-    font-size: 15px; /* Larger font for balance title */
+    margin-bottom: 5px;
+    font-size: 18px; /* Larger font for balance title */
     color: #555555; 
     display: block;
     /*border-bottom: 2px solid #fff;*/

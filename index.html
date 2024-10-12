@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="SgT4PAGADooer2kIL_VItepZXIvIqUBTNGJVRuF8Cz0" />
+    <link rel="icon" type="i/Logo" href="/vite.svg" />
     <title> Jigsaw's Game </title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="puzzle.css">
@@ -17,10 +18,10 @@
       <!-- Main Container -->
     <div class="container" style="display: none;">
         <!-- Status Bar -->
-      <div class="status-bar">
-        <div id="balanceContainer" class="balance-container">
-          <div class="separator"></div>
-           <div id="userLevel" class="user-level">
+        <div class="status-bar">
+          <div id="balanceContainer" class="balance-container">
+         <!--  <img src="i/Logo.png" alt="Logo Image" class="Logo-image"> -->
+            <div id="userLevel" class="user-level">
              Level : <span id="currentLevelName"></span>
         </div>
             <button id="levelFloatingBtn" class="level-button-floating"> > </button>
@@ -57,7 +58,7 @@
             <p id="inviteInfo">Invite a friend and you both get 50,000 coins!</p>
             <div class="invite-section">
                 <button class="invite-more" id="inviteFriendsBtn">Invite Friends</button>
-                <button class="invite-copy" id="copyInviteLinkBtn">Copy Link 🔗</button>
+                <button class="invite-copy" id="copyInviteLinkBtn">Copy🔗</button>
             </div>
             <p id="i">Invited Friends</p>
             <ul id="friendsList" class="friends-list"></ul>
@@ -121,8 +122,8 @@
                <h2>"Full features will be available soon."</h2>
                <p id="Puzzles"> Win or lose, the choice is yours</p>
           <button id="openPuzzleBtn" class="puzzle-btn">today's puzzle</button>
-          <button id="RoomPuzzleBtn" class="room-puzzle">room puzzle</button>
-          <button id="TheneverendingpuzzlePuzzleBtn" class="The-never-ending-puzzle">The never ending puzzle</button>
+         <!-- <button id="RoomPuzzleBtn" class="room-puzzle">room puzzle</button>
+         <!-- <button id="TheneverendingpuzzlePuzzleBtn" class="The-never-ending-puzzle">The never ending puzzle</button> --> 
             <!-- Puzzle Container -->
             <div id="puzzleContainer" class="puzzle-container hidden">
                 <div class="puzzle-content">
@@ -143,6 +144,7 @@
         <!-- Wallet Page -->
         <div id="walletPage" class="screen-content scrollable">
           <img src="i/wallet.png" alt="wallet Image" class="wallet-image">
+           <p id="w">wallet</p>
             <section class="wallet-container">
               <button id="withdrawBtn" class="wallet-button">Connect wallet</button>
                 <div id="withdrawalForm" style="display: none;">
@@ -247,13 +249,19 @@
         <!-- Notifications -->
         <div id="copyInviteNotification" class="notification top-notification">Invite link copied!</div>
         <div id="purchaseNotification" class="notification top-notification"></div>
-        <div id="upgradeConfirmation" class="confirmation-modal" style="display: none;">
-            <p id="upgradeText">Are you sure you want to upgrade? 🤔</p>
-            <div class="confirmation-buttons">
-                <button id="confirmUpgradeBtn" class="game-button">Upgrade</button>
-                <button id="cancelUpgradeBtn" class="game-button">Close</button>
-            </div>
+
+        <!-- Bottom Sheet Modal -->
+       <div id="upgradeConfirmation" class="confirmation-modal" style="display: none;">
+         <span id="closeModal" class="close">&times;</span> <!-- زر الإغلاق -->
+          <div class="modal-image">
+           <img src="i/Boosts3.png" alt="Centered Image"> <!-- صورة في المنتصف -->
         </div>
+           <p id="upgradeText">Are you sure you want to upgrade? 🤔</p>
+           <div class="confirmation-buttons">
+           <button id="confirmUpgradeBtn" class="game-button">Upgrade</button>
+           <button id="cancelUpgradeBtn" class="game-button">Close</button>
+       </div>
+   </div>
 
         <!-- Bottom Navigation -->
         <nav class="menu">
@@ -274,9 +282,10 @@
             </button>
          </nav>
      </div>
-
+  
       <script type="module" src="tasks.js"></script>
      <script type="module" src="puzzle.js"></script>
     <script type="module" src="script.js"></script>
+  
 </body>
 </html>

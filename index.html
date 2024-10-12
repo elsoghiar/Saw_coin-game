@@ -251,16 +251,19 @@
         <div id="purchaseNotification" class="notification top-notification"></div>
 
         <!-- Bottom Sheet Modal -->
-       <div id="upgradeConfirmation" class="confirmation-modal" style="display: none;">
-         <span id="closeModal" class="close">&times;</span> <!-- زر الإغلاق -->
-          <div class="modal-image">
-           <img src="i/Boosts3.png" alt="Centered Image"> <!-- صورة في المنتصف -->
-        </div>
-           <p id="upgradeText">Are you sure you want to upgrade? 🤔</p>
-           <div class="confirmation-buttons">
-           <button id="confirmUpgradeBtn" class="game-button">Upgrade</button>
-           <button id="cancelUpgradeBtn" class="game-button">Close</button>
-       </div>
+        <div id="upgradeConfirmation" class="confirmation-modal" style="display: none;">
+        <span id="closeModal" class="close">&times;</span> <!-- زر الإغلاق -->
+        <div class="modal-image">
+         <img src="i/Boosts3.png" alt="Centered Image"> <!-- صورة في المنتصف -->
+      </div>
+       <p id="upgradeText">Are you sure you want to upgrade to the next level?</p>
+       <p id="currentLevelDisplay">Current Level: <span id="currentLevel"></span></p>
+       <p id="currentCoinsDisplay">Coins Available: <span id="currentCoins"></span></p>
+       <p id="upgradeCostDisplay">Cost of Upgrade: <span id="upgradeCost"></span></p>
+       <div class="confirmation-buttons">
+        <button id="confirmUpgradeBtn" class="game-button">Upgrade</button>
+        <button id="cancelUpgradeBtn" class="game-button">Close</button>
+      </div>
    </div>
 
         <!-- Bottom Navigation -->

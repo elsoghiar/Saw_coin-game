@@ -202,14 +202,16 @@ body {
 }
 
 .user-level {
-    top: 0;
-    right: 50px;
+    position: fixed;
+    top: 20px; /* تعديل لقيم أقل لنقل العنصر إلى الأسفل */
+    left: -100px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
     text-align: center; 
-    font-size: 18px;
+    font-size: 18px; /* حجم الخط */
     width: 100%;
+    padding-top: 10px;
     color: #fff; 
     z-index: 5;
-}
+} 
 
 .energy-bar-container {
     display: flex;

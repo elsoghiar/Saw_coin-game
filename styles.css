@@ -766,9 +766,11 @@ body {
     left: 145px;
     background-color: transparent;
     color: #fff; 
+    width: 50px; /* ضبط العرض */
+    height: 50px; 
     font-size: 20px;
-    padding: 3px 3px;
-    border-radius: 100px;
+    padding: 5px 5px;
+    border-radius: 50%;
     border: 2px solid #343434;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

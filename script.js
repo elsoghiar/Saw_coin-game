@@ -737,21 +737,21 @@ async function updateUserData() {
     }
 }
 
-const inviteButton = document.getElementById("inviteFriendsBtn");
+//const inviteButton = document.getElementById("inviteFriendsBtn");
 
-let scale = 1;
-let growing = true;
+//let scale = 1;
+//let growing = true;
 
-setInterval(() => {
-    if (growing) {
-        scale += 0.05;
-        if (scale >= 1.2) growing = false; // الحد الأقصى للزيادة
-    } else {
-        scale -= 0.05;
-        if (scale <= 1) growing = true; // الحد الأدنى للانخفاض
-    }
-    inviteButton.style.transform = `scale(${scale})`;
-}, 280);// مدة التأثير كل 100 مللي ثانية
+//setInterval(() => {
+   // if (growing) {
+      //  scale += 0.05;
+      //  if (scale >= 1.2) growing = false; 
+  //  } else {
+      //  scale -= 0.05;
+       // if (scale <= 1) growing = true;
+  //  }
+//   inviteButton.style.transform = `scale(${scale})`;
+// }, 280);
 
 
 document.querySelectorAll('button[data-target]').forEach(button => {

@@ -441,11 +441,6 @@ function confirmUpgradeAction() {
     uiElements.upgradeModal.style.display = 'none';  // إخفاء النافذة المنبثقة بعد الترقية
 }
 
-// إغلاق النافذة المنبثقة
-document.getElementById('closeModal').addEventListener('click', function() {
-    uiElements.upgradeModal.style.display = 'none';
-});
-
 
 // ملء الطاقة
 function fillEnergyAction() {

@@ -768,7 +768,7 @@ body {
     color: #fff; 
     font-size: 20px;
     padding: 5px;
-    border-radius: 50%;
+    border-radius: 25px;
     border: 2px solid #343434;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

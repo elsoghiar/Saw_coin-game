@@ -384,7 +384,7 @@ function showNotification(notificationElement, message) {
 }
 
 
-// دالة عرض نافذة الترقية مع عرض المستوى الحالي، العملات، وتكلفة الترقية
+// عرض النافذة المنبثقة بناءً على نوع الترقية (النقر أو العملات)
 function showUpgradeModal(upgradeType) {
     if (uiElements.upgradeModal) {
         uiElements.upgradeModal.style.display = 'block';
@@ -394,17 +394,27 @@ function showUpgradeModal(upgradeType) {
         if (upgradeType === 'boost') {
             cost = gameState.boostLevel * 4000 + 500;
             uiElements.upgradeText.innerText = `Are you sure you want to upgrade your click multiplier? It will cost ${cost} coins.`;
+            uiElements.currentLevel.innerText = `Current Click Multiplier: ×${gameState.clickMultiplier}`;
         } else if (upgradeType === 'coin') {
             cost = gameState.coinBoostLevel * 4000 + 500;
             uiElements.upgradeText.innerText = `Are you sure you want to upgrade your max coins? It will cost ${cost} coins.`;
+            uiElements.currentLevel.innerText = `Current Max Coins: ${formatNumber(gameState.maxEnergy)}`;
         }
 
-        // تحديث النافذة بالمستوى الحالي وعدد العملات
-        uiElements.currentLevel.innerText = gameState.currentLevel;
+        // تحديث العملات المتاحة وتكلفة الترقية
         uiElements.currentCoins.innerText = formatNumber(gameState.balance);
         uiElements.upgradeCost.innerText = cost;
     }
 }
+
+// ربط أزرار الترقية بالنافذة المنبثقة
+document.getElementById('boostUpgradeBtn').addEventListener('click', function() {
+    showUpgradeModal('boost');
+});
+
+document.getElementById('coinUpgradeBtn').addEventListener('click', function() {
+    showUpgradeModal('coin');
+});
 
 // دالة تأكيد الترقية وتحديث حالة اللعبة بعد الترقية
 function confirmUpgradeAction() {

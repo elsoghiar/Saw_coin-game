@@ -784,9 +784,9 @@ body {
     background-color: transparent;
     color: #fff; 
     font-size: 20px;
-    padding: 2px 2px;
+    padding: 5px 5px;
     border-radius: 50%;
-    border: 2px solid #343434;
+    border-bottom: 2px solid #fff; 
     cursor: pointer;
     box-shadow: 0 3px 1px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;

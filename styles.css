@@ -184,7 +184,7 @@ body {
     font-weight: bold;
     margin-bottom: 7px;
     font-size: 15px; /* Larger font for balance title */
-    color: #808080; 
+    color: #555555; 
     display: block;
     /*border-bottom: 2px solid #fff;*/
     padding-bottom: 2px; /* مسافة بين النص والخط */
@@ -225,7 +225,7 @@ body {
 }
 
 .progress-bar {
-    width: 160px; /* عرض الشريط */
+    width: 170px; /* عرض الشريط */
     height: 15px; /* ارتفاع الشريط */
     background-color: #555555; /* خلفية الشريط شفافة */
     border-radius: 50px; /* شكل الشريط */

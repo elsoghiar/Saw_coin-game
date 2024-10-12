@@ -129,7 +129,7 @@ body {
     border-bottom: 4px solid #343434; /* إضافة حدود في الجزء السفلي */
    /* border-radius: 15px 15px 15px 15px;*/
    /* border: 2px solid #343434;*/
-    background: transparent; 
+    background: #000; 
    /* background: linear-gradient(180deg, #000, #9f0000);*/
     background-position: center;
     position: relative;

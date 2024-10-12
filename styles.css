@@ -768,7 +768,7 @@ body {
     color: #fff; 
     font-size: 20px;
     padding: 3px 3px;
-    border-radius: 50px;
+    border-radius: 100px;
     border: 2px solid #343434;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -802,7 +802,7 @@ body {
 
 .boosts-button {
     position: fixed;
-    top: 77.0vh; 
+    top: 77.5vh; 
     right: 2.5vw; /* المسافة من الجانب الأيمن */
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;

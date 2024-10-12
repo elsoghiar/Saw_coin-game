@@ -23,6 +23,7 @@ const uiElements = {
     confirmUpgradeBtn: document.getElementById('confirmUpgradeBtn'),
     cancelUpgradeBtn: document.getElementById('cancelUpgradeBtn'),
     upgradeModal: document.getElementById('upgradeConfirmation'),
+    closeModal: document.getElementById('closeModal'),
     fillEnergyBtn: document.getElementById('fillEnergyBtn'),
     withdrawBtn: document.getElementById('withdrawBtn'),
     withdrawalForm: document.getElementById('withdrawalForm'),
@@ -376,7 +377,7 @@ function showNotification(notificationElement, message) {
     notificationElement.classList.add('show');
     setTimeout(() => {
         notificationElement.classList.remove('show');
-    }, 3000);
+    }, 4000);
 }
 
 // دالة لتأكيد الترقية
@@ -385,9 +386,9 @@ function confirmUpgradeAction() {
     let upgradeType = uiElements.upgradeModal.getAttribute('data-upgrade-type');
 
     if (upgradeType === 'boost') {
-        cost = gameState.boostLevel * 2000 + 500;
+        cost = gameState.boostLevel * 4000 + 500;
     } else if (upgradeType === 'coin') {
-        cost = gameState.coinBoostLevel * 2000 + 500;
+        cost = gameState.coinBoostLevel * 4000 + 500;
     } else if (upgradeType === 'energy') {
         cost = 0; // جعل ترقية الطاقة مجانية
     }
@@ -429,10 +430,10 @@ function showUpgradeModal(upgradeType) {
 
         let cost;
         if (upgradeType === 'boost') {
-            cost = gameState.boostLevel * 2000 + 500;
+            cost = gameState.boostLevel * 4000 + 500;
             if (uiElements.upgradeText) uiElements.upgradeText.innerText = `Are you sure you want to upgrade your click multiplier? It will cost ${cost} coins.`;
         } else if (upgradeType === 'coin') {
-            cost = gameState.coinBoostLevel * 2000 + 500;
+            cost = gameState.coinBoostLevel * 4000 + 500;
             if (uiElements.upgradeText) uiElements.upgradeText.innerText = `Are you sure you want to upgrade your max coins? It will cost ${cost} coins.`;
         } else if (upgradeType === 'energy') {
             cost = 0; // مجاني
@@ -753,6 +754,13 @@ document.querySelectorAll('button[data-target]').forEach(button => {
     });
 });
 
+
+// إغلاق النافذة المنبثقة
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('upgradeConfirmation').style.display = 'none';
+});
+
+
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {
     const telegramApp = window.Telegram.WebApp;
@@ -780,3 +788,4 @@ function initializeTelegramIntegration() {
 }
 
 initializeApp();
+

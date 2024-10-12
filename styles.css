@@ -126,7 +126,7 @@ body {
     padding: 20px 30px;
     border-bottom-left-radius: 20px; /* حواف دائرية في الزاوية السفلية اليسرى */
     border-bottom-right-radius: 20px; /* حواف دائرية في الزاوية السفلية اليمنى */
-    border-bottom: 2px solid #343434; /* إضافة حدود في الجزء السفلي */
+    border-bottom: 4px solid #343434; /* إضافة حدود في الجزء السفلي */
    /* border-radius: 15px 15px 15px 15px;*/
    /* border: 2px solid #343434;*/
     background: transparent; 

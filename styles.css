@@ -779,7 +779,7 @@ body {
 
 .level-button-floating {
     position: fixed;
-    top: 16px; 
+    top: 15px; 
     left: 155px;
     background-color: transparent;
     color: #fff; 

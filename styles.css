@@ -135,7 +135,7 @@ body {
     position: relative;
     width: %;
     height: auto; 
-    margin: 3px auto;
+    margin: 5px auto;
     margin-left: 10px;
     margin-right: 10px;
     z-index: 100;
@@ -204,7 +204,7 @@ body {
 .user-level {
     position: fixed;
     top: 0px; /* تعديل لقيم أقل لنقل العنصر إلى الأسفل */
-    left: 10px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
+    left: -58px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
     text-align: center; 
     font-size: 18px; /* حجم الخط */
     width: 100%;

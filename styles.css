@@ -201,17 +201,17 @@ body {
     display: block;
 }
 
-.user-level {
+/*.user-level {
     position: fixed;
-    top: 20px; /* تعديل لقيم أقل لنقل العنصر إلى الأسفل */
-    left: -100px; /* تعديل لقيم أقل لنقل العنصر إلى الشمال */
+    top: 20px; 
+    left: -100px; 
     text-align: center; 
-    font-size: 18px; /* حجم الخط */
+    font-size: 18px; 
     width: 100%;
     padding-top: 10px;
     color: #fff; 
     z-index: 5;
-} 
+}*/
 
 .energy-bar-container {
     display: flex;

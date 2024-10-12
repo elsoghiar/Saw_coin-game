@@ -218,39 +218,37 @@ body {
     flex-direction: column; /* ترتيب العناصر عموديًا */
     justify-content: flex-start; /* الاحتفاظ بمحاذاة إلى اليسار */
     align-items: flex-start; /* الشريط والمعلومات في نفس المحاذاة على اليسار */
-    position: relative;
-    top: 0px; /* تأكيد بقاء المعلومات في مكانها */
-    left: 0px; /* إلغاء تحريك الحاوية إلى اليسار */
+    position: absolute; /* تثبيت الحاوية في مكان محدد */
+    bottom: 20px; /* ضبطه ليكون في الجزء السفلي */
+    left: 20px; /* مسافة من الجانب الأيسر */
     margin-left: 0px;
 }
 
 .progress-bar {
-    width: 150px;
-    height: 20px;
-    background-color: transparent;
-    border-radius: 50px;
-    overflow: hidden;
+    width: 150px; /* عرض الشريط */
+    height: 20px; /* ارتفاع الشريط */
+    background-color: transparent; /* خلفية الشريط شفافة */
+    border-radius: 50px; /* شكل الشريط */
+    overflow: hidden; /* قص المحتوى الزائد */
     margin-top: 5px; /* مسافة بسيطة بين المعلومات والشريط */
 }
 
 .progress-bar-inner {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, #c0c0c0, #343434);
-    transition: width 0.5s ease;
+    height: 100%; /* ارتفاع الشريط الداخلي */
+    width: 100%; /* عرض الشريط الداخلي */
+    background: linear-gradient(90deg, #c0c0c0, #343434); /* تدرج اللون */
+    transition: width 0.5s ease; /* تأثير انتقال العرض */
 }
 
 #energyInfo {
-    font-size: 19px;
-    font-weight: bold;
-    color: #fff;
-    position: relative;
-    top: 0px; /* المعلومات تبقى في مكانها دون تغيير */
+    font-size: 19px; /* حجم الخط */
+    font-weight: bold; /* سمك الخط */
+    color: #fff; /* لون النص */
     text-align: left; /* المحاذاة لليسار */
     margin-left: 0px;
     direction: rtl; /* الحفاظ على الاتجاه من اليمين لليسار */
-    
 }
+ 
  
 .main-content {
     display: flex;

@@ -221,6 +221,7 @@ body {
     position: relative;
     top: 0px; /* تأكيد بقاء المعلومات في مكانها */
     left: 0px; /* إلغاء تحريك الحاوية إلى اليسار */
+    margin-left: 0px;
 }
 
 .progress-bar {
@@ -246,7 +247,9 @@ body {
     position: relative;
     top: 0px; /* المعلومات تبقى في مكانها دون تغيير */
     text-align: left; /* المحاذاة لليسار */
+    margin-left: 0px;
     direction: rtl; /* الحفاظ على الاتجاه من اليمين لليسار */
+    
 }
  
 .main-content {

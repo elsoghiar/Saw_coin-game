@@ -227,7 +227,7 @@ body {
 .progress-bar {
     width: 150px; /* عرض الشريط */
     height: 20px; /* ارتفاع الشريط */
-    background-color: transparent; /* خلفية الشريط شفافة */
+    background-color: #555555; /* خلفية الشريط شفافة */
     border-radius: 50px; /* شكل الشريط */
     overflow: hidden; /* قص المحتوى الزائد */
     margin-top: 5px; /* مسافة بسيطة بين المعلومات والشريط */
@@ -236,7 +236,7 @@ body {
 .progress-bar-inner {
     height: 100%; /* ارتفاع الشريط الداخلي */
     width: 100%; /* عرض الشريط الداخلي */
-    background: linear-gradient(90deg, #c0c0c0, #343434); /* تدرج اللون */
+    background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c); 
     transition: width 0.5s ease; /* تأثير انتقال العرض */
 }
 

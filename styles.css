@@ -442,7 +442,7 @@ body {
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 2px;
+    margin: 5px;
 } 
 
 .invite-copy:hover {

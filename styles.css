@@ -219,7 +219,7 @@ body {
     justify-content: flex-start; /* الاحتفاظ بمحاذاة إلى اليسار */
     align-items: flex-start; /* الشريط والمعلومات في نفس المحاذاة على اليسار */
     position: absolute; /* تثبيت الحاوية في مكان محدد */
-    bottom: 50px; /* ضبطه ليكون في الجزء السفلي */
+    bottom: 110px; /* ضبطه ليكون في الجزء السفلي */
     left: 20px; /* مسافة من الجانب الأيسر */
     margin-left: 0px;
 }

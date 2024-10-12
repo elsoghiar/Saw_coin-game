@@ -223,6 +223,24 @@ body {
     left: -80px;
 }
 
+.progress-bar {
+    width: 150px;
+    height: 20px;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    background: linear-gradient(90deg, #c0c0c0, #343434);
+    transition: width 0.5s ease;
+}
+
 #energyInfo {
     font-size: 19px;
     font-weight: bold;

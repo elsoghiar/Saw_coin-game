@@ -135,11 +135,11 @@ body {
     position: relative;
     width: %;
     height: auto; 
-    margin: 5px auto;
+    margin: 1px auto;
     margin-left: 10px;
     margin-right: 10px;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0); /* إضافة الظل */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5); /* إضافة الظل */
 } 
  
 

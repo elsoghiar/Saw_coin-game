@@ -768,12 +768,12 @@ body {
     color: #fff; 
     font-size: 20px;
     padding: 3px 3px;
-    border-radius: 10px;
-   /* border: 2px solid #343434;*/
+    border-radius: 50px;
+    border: 2px solid #343434;
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
-    z-index: 1;  
+    z-index: 5;  
 
 } 
 .level-button-floating:hover {
@@ -802,7 +802,7 @@ body {
 
 .boosts-button {
     position: fixed;
-    top: 78.0vh; 
+    top: 77.0vh; 
     right: 2.5vw; /* المسافة من الجانب الأيمن */
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;

@@ -201,18 +201,15 @@ body {
     display: block;
 }
 
-/*.user-level {
-    position: fixed;
-    top: 10px;
-    left: -100px;
+.user-level {
+    left: 30px;
     text-align: center; 
     font-size: 12px;
     width: 100%;
-    padding-top: 10px;
     color: #fff; 
     z-index: 5;
 }
-*/
+
 .energy-bar-container {
     display: flex;
     flex-direction: column; /* ترتيب العناصر عموديًا */

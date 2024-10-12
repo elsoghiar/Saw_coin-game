@@ -60,6 +60,8 @@ body {
     background-image: url('i/sk3.png');
     background-size: cover;
     background-position: center;
+    border-top-left-radius: 25px; /* لجعل الزاوية العلوية اليسرى دائرية */
+    border-top-right-radius: 25px; /* لجعل الزاوية العلوية اليمنى دائرية */
 } 
  
 .screen-content {
@@ -121,10 +123,14 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 22px 35px;
-    border-radius: 15px 15px 15px 15px; 
-    border: 2px solid #343434; 
-    background: linear-gradient(180deg, #000, #9f0000);
+    padding: 20px 30px;
+    border-bottom-left-radius: 20px; /* حواف دائرية في الزاوية السفلية اليسرى */
+    border-bottom-right-radius: 20px; /* حواف دائرية في الزاوية السفلية اليمنى */
+    border-bottom: 2px solid #343434; /* إضافة حدود في الجزء السفلي */
+   /* border-radius: 15px 15px 15px 15px;*/
+   /* border: 2px solid #343434;*/
+    background: transparent; 
+   /* background: linear-gradient(180deg, #000, #9f0000);*/
     background-position: center;
     position: relative;
     width: %;
@@ -132,7 +138,10 @@ body {
     margin: 5px auto;
     margin-left: 10px;
     margin-right: 10px;
-}
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0); /* إضافة الظل */
+} 
+ 
 
  .game-title {
     font-size: 20px;
@@ -149,14 +158,13 @@ body {
     color: #fff;
 } 
 
-/*.balance-container {
+.balance-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
     background-color: transparent;
-}*/
+}
 
 .user-info {
     display: flex;
@@ -175,8 +183,8 @@ body {
 #balanceTitle {
     font-weight: bold;
     margin-bottom: 7px;
-    font-size: 18px; /* Larger font for balance title */
-    color: #fff; 
+    font-size: 15px; /* Larger font for balance title */
+    color: #808080; 
     display: block;
     /*border-bottom: 2px solid #fff;*/
     padding-bottom: 2px; /* مسافة بين النص والخط */
@@ -188,7 +196,7 @@ body {
     text-align: center;*/
     font-weight: bold;
     margin: 0 auto;
-    font-size: 45px;
+    font-size: 40px;
     color: #fff; 
     display: block;
 }
@@ -216,7 +224,7 @@ body {
 }
 
 #energyInfo {
-    font-size: 15px;
+    font-size: 19px;
     font-weight: bold;
     color: #fff;
     position: relative;
@@ -242,8 +250,8 @@ body {
 }
 
 .clickable-image img {
-    width: 280px;
-    height: 280px;
+    width: 290px;
+    height: 290px;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -268,13 +276,23 @@ body {
     }
 } 
 
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 .diamond-coin {
     position: absolute;
     width: 20px;
     height: 20px;
     background-size: cover;
     pointer-events: none;
-    animation: coin-bounce 1s infinite;
+    animation: coin-bounce 1s infinite, fade-out 1s forwards; /* استخدام forwards هنا */
     z-index: 9999;
 }
 
@@ -283,7 +301,7 @@ body {
     top: -20px;
     right: -10px;
     color: #fff;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -292,12 +310,12 @@ body {
 .menu {
     display: flex;
     justify-content: space-between;
-    padding: 7px;
+    padding: 8px;
     border: 2px solid #343434; 
     background: linear-gradient(180deg, #000, #9f0000);
     background-position: center;
     position: fixed;
-    bottom: 20px;
+    bottom: 15px;
     box-sizing: border-box; 
     width: calc(100% - 20px);
     left: 10px;
@@ -310,7 +328,7 @@ body {
     background-color: transparent;
     color: #fff;
     border: none;
-    padding: 7px;
+    padding: 5px;
     box-sizing: border-box; 
     font-size: 12px;
     font-weight: bold;
@@ -335,8 +353,8 @@ body {
 }
  
 .menu button img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     margin-bottom: 3px;
 }
 
@@ -360,9 +378,9 @@ body {
 
 .invite-section {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
+    justify-content: center; /* يضع الزرين في المنتصف أفقياً */
+    gap: 10px; /* يضبط المسافة بين الزرين */
+    margin-top: 10px; /* إذا كنت بحاجة إلى مسافة من الأعلى */
 }
 
 .invite-image {
@@ -401,13 +419,13 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border: 2px solid #343434; 
-    padding: 14px 28px;
+    padding: 8px 10px;
     font-size: 15px;
     font-weight: bold;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 5px;
+    margin: 2px;
 } 
 
 .invite-copy:hover {
@@ -527,23 +545,48 @@ body {
 }
  
 .confirmation-modal {
-    background-color: #000;
-    padding: 40px;
-    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.90); /* خلفية شفافة */
+    padding: 20px;
+    border-radius: 25px 25px 0 0; /* حواف علوية دائرية فقط */
+    border-top: 4px solid #343434;
     text-align: center;
-    margin-top: -20px;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    transform: translateY(0); /* يظهر من الأسفل */
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* توزيع العناصر بين الأعلى والأسفل */
 }
 
+.modal-image img {
+    width: 200px; /* حجم الصورة */
+    height: 200px;
+    margin: 10px auto; /* موازنة الصورة في المنتصف */
+    display: block;
+    flex-grow: 5;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+/* الأزرار في أسفل النافذة */
 .confirmation-buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
     gap: 13px;
+    margin-top: auto; /* لجعل الأزرار في الأسفل */
+    padding: 10px 0; /* إضافة مسافة للأزرار من الأسفل */
 }
 
 .confirmation-buttons .game-button {
@@ -554,7 +597,6 @@ body {
     border: 2px solid #343434; 
     cursor: pointer;
     background: linear-gradient(180deg, #9f0000, #000);
-    background-position: center;
     color: #fff;
     transition: background-color 0.3s ease;
 }
@@ -562,6 +604,7 @@ body {
 .confirmation-buttons .game-button:hover {
     background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
 }
+ 
 
 .notification {
     position: fixed;
@@ -570,20 +613,23 @@ body {
     transform: translateX(-50%);
     background: linear-gradient(180deg, #000, #343434);
     color: #fff;
-    padding: 15px 20px; /* زيادة padding لجعل الإشعار طويل */
+    padding: 10px 20px; /* زيادة padding لجعل الإشعار طويل */
     border-radius: 15px;
     border: 1px solid #000;
-    font-size: 16px;
+    font-size: 14px;
     z-index: 1000;
     transition: top 0.5s ease, opacity 0.5s ease; /* انتقال لعناصر الظهور والانزلاق */
     opacity: 0; /* البداية غير مرئية */
+    width: 300px; /* عرض ثابت للإشعار */
+    max-width: 85%; /* الحد الأقصى لعرض الإشعار بنسبة 90% من الشاشة */
+    text-align: center; /* محاذاة النص إلى المنتصف */
 }
 
 .notification.show {
     top: 10px; /* موقع الإشعار عند الظهور */
     opacity: 1; /* مرئية */
-} 
-
+}
+ 
 .level-container {
     display: flex;
     flex-direction: row;
@@ -602,7 +648,7 @@ body {
 }
 
 .level-item {
-    margin: 8px; /* هامش بين العناصر */
+    margin: 10px; /* هامش بين العناصر */
     display: flex; 
     flex-direction: column; 
     align-items: center; 
@@ -610,13 +656,13 @@ body {
     text-align: center;
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
-    padding: 5px; /* تقليل الحشوة */
+    padding: 4px; /* تقليل الحشوة */
     border: 2px solid #343434; 
     border-radius: 20px;
     width: 100%;
     max-width: 250px; /* تقليل العرض الأقصى */
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-    font-size: 12px; /* تقليل حجم الخط */
+    font-size: 14px; /* تقليل حجم الخط */
     letter-spacing: -0.2px; /* تقليل المسافة بين الحروف */
 }
  
@@ -651,7 +697,6 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
-    margin-bottom: 10px; 
 } 
 
 .wallet-button {
@@ -664,7 +709,7 @@ body {
     transition: background-color 0.3s;
     font-size: 16px;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 0;
     width: 100%;
     max-width: 300px;
 }
@@ -717,13 +762,14 @@ body {
 
 .level-button-floating {
     position: fixed;
-    top: 26px; 
-    left: 147px;
+    top: 21px; 
+    left: 145px;
     background-color: transparent;
     color: #fff; 
-    padding: 3px 4px;
+    font-size: 20px;
+    padding: 3px 3px;
     border-radius: 10px;
-    border: 2px solid #343434;
+   /* border: 2px solid #343434;*/
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease;
@@ -755,9 +801,9 @@ body {
  }
 
 .boosts-button {
-    position: absolute;
-    top: 442px; /* غير هذا الرقم حسب الحاجة لضبط المكان */
-    right: 10px; /* المسافة من الجانب الأيمن */
+    position: fixed;
+    top: 78.0vh; 
+    right: 2.5vw; /* المسافة من الجانب الأيمن */
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border: 2px solid #343434;
@@ -767,7 +813,7 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 14px;
-    margin: 10px 2px;
+    margin: 0;
     cursor: pointer;
     z-index: 50;  
 }
@@ -777,9 +823,14 @@ body {
 }
  
 .boosts-button img {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     vertical-align: middle;
     margin-right: 5px;
 }
  
+/* .Logo-image {
+    width: 20px;
+    margin-right: 10px;
+}*/
+

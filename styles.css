@@ -215,28 +215,26 @@ body {
 */
 .energy-bar-container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+    flex-direction: column; /* ترتيب العناصر عموديًا */
+    justify-content: flex-start; /* الاحتفاظ بمحاذاة إلى اليسار */
+    align-items: flex-start; /* الشريط والمعلومات في نفس المحاذاة على اليسار */
     position: relative;
-    top: -25px;
-    left: -80px;
+    top: 0px; /* تأكيد بقاء المعلومات في مكانها */
+    left: 0px; /* إلغاء تحريك الحاوية إلى اليسار */
 }
 
 .progress-bar {
     width: 150px;
     height: 20px;
-    justify-content: center;
     background-color: transparent;
     border-radius: 50px;
     overflow: hidden;
-    margin-top: 5px;
+    margin-top: 5px; /* مسافة بسيطة بين المعلومات والشريط */
 }
 
 .progress-bar-inner {
     height: 100%;
     width: 100%;
-    justify-content: center;
     background: linear-gradient(90deg, #c0c0c0, #343434);
     transition: width 0.5s ease;
 }
@@ -246,10 +244,9 @@ body {
     font-weight: bold;
     color: #fff;
     position: relative;
-    top: 3px; /* رفع النص قليلاً */
-    text-align: left; /* محاذاة النص لليسار */
-    margin-left: 0; /* عدم إضافة مسافة إلى اليمين */
-    direction: rtl; /* لضمان أن النص يبدأ من اليسار في اللغات العربية */
+    top: 0px; /* المعلومات تبقى في مكانها دون تغيير */
+    text-align: left; /* المحاذاة لليسار */
+    direction: rtl; /* الحفاظ على الاتجاه من اليمين لليسار */
 }
  
 .main-content {

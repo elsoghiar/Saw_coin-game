@@ -135,7 +135,7 @@ body {
     position: relative;
     width: %;
     height: auto; 
-    margin: 5px auto;
+    margin: 3px auto;
     margin-left: 10px;
     margin-right: 10px;
     z-index: 100;
@@ -780,7 +780,7 @@ body {
 .level-button-floating {
     position: fixed;
     top: 18.5px; 
-    left: 145px;
+    left: 100px;
     background-color: transparent;
     color: #fff; 
     font-size: 20px;

@@ -771,26 +771,22 @@ document.getElementById('closeModal').addEventListener('click', function() {
 });
 
 
-// تحديث الرصيد مع تأثير الحركة
-function updateBalance(newBalance) {
-    const balanceElement = uiElements.balanceDisplay; // من الملف الرئيسي
-
-    const direction = newBalance > gameState.balance ? 1 : -1; // تحديد الاتجاه
-    balanceElement.style.transform = `translateY(${direction * -20}px)`; // حركة لأعلى أو أسفل
-    
-    setTimeout(() => {
-        balanceElement.innerText = formatNumber(newBalance); // تحديث الرقم بعد الحركة
-        balanceElement.style.transform = 'translateY(0)'; // إرجاع الرقم إلى مكانه الأصلي
-    }, 500); // مدة التأثير
-
-    gameState.balance = newBalance; // تحديث حالة اللعبة
-    saveGameState(); // حفظ التغييرات
+// تهيئة Google Translate عند تحميل الصفحة
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en', // اللغة الافتراضية للموقع
+    includedLanguages: 'en,ar,fr,de,es', // اللغات المسموح بها (يمكنك تعديلها)
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+  }, 'google_translate_element');
 }
 
-// مثال: تحديث الرصيد بعد 3 ثوانٍ
-setTimeout(() => {
-    updateBalance(1050); // تغيير الرصيد إلى 1050
-}, 3000);
+// وظيفة مخصصة لتفعيل الترجمة عند الضغط على الزر
+function translatePage() {
+  const translateElement = document.querySelector('.goog-te-combo');
+  if (translateElement) {
+    translateElement.click(); // فتح قائمة اختيار اللغة
+  }
+}
 
 
 // تهيئة تكامل Telegram

@@ -175,7 +175,7 @@ body {
     font-size: 15px; 
     margin: 10px;
     color: #fff; 
-    width: 60%;
+    width: 80%;
     padding: 8px 15px;
     border-radius: 12px;
     border: 2px solid #343434; 
@@ -412,13 +412,13 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border: 2px solid #343434; 
-    padding: 20px 40px;
+    padding: 20px 50px;
     font-size: 15px;
     font-weight: bold;
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 5px;
+   /* margin: 5px;*/
 }
 
 .invite-more:hover {
@@ -443,7 +443,6 @@ body {
     border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin: 5px;
 } 
 
 .invite-copy:hover {

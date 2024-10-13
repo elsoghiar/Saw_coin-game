@@ -205,9 +205,9 @@ body {
 #balanceAmount::after {
     content: "";
     display: inline-block;
-    width: 16px; /* عرض الصورة */
-    height: 16px; /* ارتفاع الصورة */
-    background-image: url('i/Logo.png'); /* رابط الصورة */
+    width: 30px; /* عرض الصورة */
+    height: 30px; /* ارتفاع الصورة */
+    background-image: url('i/sawcoin.png'); /* رابط الصورة */
     background-size: contain; /* يجعل الصورة تناسب الحجم المحدد */
     background-repeat: no-repeat;
     margin-left: 5px; /* مسافة بين الرقم والصورة */

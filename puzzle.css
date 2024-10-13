@@ -42,12 +42,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 #Puzzlespage .puzzle-content {
-    background-color: rgba(0, 0, 0, 1); /* خلفية شفافة */
-    padding: 20px;
+    background-color: rgba(0, 0, 0, 1); /* خلفية غير شفافة */
+    padding: 10px; /* تقليل الحواف الداخلية */
     border-radius: 25px 25px 0 0; /* حواف علوية دائرية فقط */
     border-top: 4px solid #343434;
     text-align: center;
@@ -55,23 +55,23 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 99999;
+    z-index: 9999; /* قيمة z-index عالية جداً */
     transform: translateY(0); /* يظهر من الأسفل */
     height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* توزيع العناصر بين الأعلى والأسفل */
+    justify-content: flex-start; /* تقريب العناصر ببعضها */
+    gap: 5px; /* تقليل المسافة بين العناصر */
 }
 
 #Puzzlespage input, 
 #Puzzlespage button {
-    margin-top: 10px;
-    padding: 8px;
+    margin-top: 5px; /* تقليل المسافة العليا */
+    padding: 5px; /* تقليل الحواف الداخلية */
     width: 100%;
     font-size: 16px;
     border-radius: 5px;
-
-}   
+}
 
 #Puzzlespage input {
     border: 2px solid #343434; 
@@ -98,7 +98,7 @@
     margin-top: 20px;
     font-size: 14px;
     color: red;
-    z-index: 1000;
+    z-index: 5000000000;
 }
 
 #Puzzlespage .success {
@@ -211,4 +211,4 @@
     color: #fff; /* لون النص */
     margin-right: 10px; /* مسافة بين النص والمؤقت */
     text-align: center;
- }
+}

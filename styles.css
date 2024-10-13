@@ -437,7 +437,7 @@ body {
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border: 2px solid #343434; 
-    padding: 8px 10px;
+    padding: 8px 15px;
     font-size: 15px;
     font-weight: bold;
     border-radius: 15px;
@@ -455,7 +455,7 @@ body {
     padding: 0;
     list-style: none;
     color: #fff;
-    width: 80%;
+    width: 90%;
     padding: 8px; 
     background: linear-gradient(180deg, #000, #9f0000);
     border-radius: 15px;

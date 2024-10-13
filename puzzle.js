@@ -17,6 +17,7 @@ function getTodaysPuzzle(puzzles) {
 }
 
 // تعريف عناصر DOM
+const puzzlecloseModal = document.getElementById('puzzlecloseModal');
 const puzzleContainer = document.getElementById('puzzleContainer');
 const openPuzzleBtn = document.getElementById('openPuzzleBtn');
 const puzzleQuestion = document.getElementById('puzzleQuestion');
@@ -190,3 +191,12 @@ closePuzzleBtn.addEventListener('click', closePuzzle); // إغلاق الأحج�
 function updateUI() {
     document.getElementById('balanceDisplay').innerText = gameState.balance.toLocaleString(); // عرض الرصيد الحالي
 }
+
+document.getElementById('puzzlecloseModal').addEventListener('click', function() {
+    document.getElementById('puzzleContainer').classList.add('hidden'); // استخدام classList لإضافة 'hidden'
+});
+
+// افترض أنك تفتح النافذة عبر زر معين
+document.getElementById('openPuzzleBtn').addEventListener('click', function() {
+    document.getElementById('puzzleContainer').classList.remove('hidden'); // إزالة 'hidden' عند الفتح
+});

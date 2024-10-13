@@ -771,6 +771,21 @@ document.getElementById('closeModal').addEventListener('click', function() {
 });
 
 
+function updateBalance(newBalance) {
+    const balanceElement = document.getElementById('balanceAmount');
+    
+    // إضافة فئة التحريك
+    balanceElement.classList.add('updating');
+
+    // تحديث الرصيد
+    balanceElement.textContent = newBalance;
+
+    // إزالة فئة التحريك بعد انتهاء التحريك
+    setTimeout(() => {
+        balanceElement.classList.remove('updating');
+    }, 500); // يجب أن يكون نفس وقت التحريك في CSS
+}
+
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {
     const telegramApp = window.Telegram.WebApp;

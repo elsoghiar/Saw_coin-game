@@ -613,14 +613,16 @@ body {
 /* الأزرار في أسفل النافذة */
 .confirmation-buttons {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 13px;
     margin-top: auto; /* لجعل الأزرار في الأسفل */
     padding: 10px 0; /* إضافة مسافة للأزرار من الأسفل */
 }
 
 .confirmation-buttons .game-button {
-    padding: 10px 20px;
+    padding: 15px 25px;
     font-size: 14px;
     font-weight: bold;
     border-radius: 10px;

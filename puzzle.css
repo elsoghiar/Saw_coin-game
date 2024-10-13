@@ -46,7 +46,7 @@
 }
 
 #Puzzlespage .puzzle-content {
-    background-color: rgba(0, 0, 0, 0.90); /* خلفية شفافة */
+    background-color: rgba(0, 0, 0, 1); /* خلفية شفافة */
     padding: 20px;
     border-radius: 25px 25px 0 0; /* حواف علوية دائرية فقط */
     border-top: 4px solid #343434;
@@ -55,9 +55,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 10000;
+    z-index: 50000;
     transform: translateY(0); /* يظهر من الأسفل */
-    height: 70vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* توزيع العناصر بين الأعلى والأسفل */

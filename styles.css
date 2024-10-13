@@ -192,21 +192,31 @@ body {
 }
 
 #balanceAmount {
-   /* font-family: 'Fira Mono', 'Rubik', sans-serif; 
-    width: 100px;
-    text-align: center;*/
     font-weight: bold;
     margin: 0 auto;
     font-size: 40px;
-    color: #fff; 
+    color: #fff;
     display: block;
+    position: relative; /* لجعل العنصر ثابتًا */
+    transition: transform 0.3s ease-in-out; /* تأثير تغيير الرقم */
 }
+
+@keyframes balanceAnimation {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* تحريك الرقم للأعلى */
+    100% { transform: translateY(0); }
+}
+
+#balanceAmount.updating {
+    animation: balanceAnimation 0.5s ease-in-out; /* تطبيق التحريك عند التحديث */
+}
+
 
 #balanceAmount::before {
     content: "";
     display: inline-block;
-    width: 31px; /* عرض الصورة */
-    height: 31px; /* ارتفاع الصورة */
+    width: 30px; /* عرض الصورة */
+    height: 30px; /* ارتفاع الصورة */
     background-image: url('i/coinsaw.png'); /* رابط الصورة */
     background-size: contain; /* يجعل الصورة تناسب الحجم المحدد */
     background-repeat: no-repeat;

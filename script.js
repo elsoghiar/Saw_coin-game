@@ -771,25 +771,6 @@ document.getElementById('closeModal').addEventListener('click', function() {
 });
 
 
-// تهيئة Google Translate عند تحميل الصفحة
-function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,ar,fr,de,es',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-}
-
-// وظيفة مخصصة لتغيير اللغة
-function translatePage() {
-    const translateElement = document.querySelector('.goog-te-combo');
-    if (translateElement) {
-        translateElement.value = 'ar'; // هنا نحدد اللغة المطلوبة (على سبيل المثال 'ar' للغة العربية)
-        translateElement.dispatchEvent(new Event('change')); // إطلاق حدث "التغيير" لإجراء الترجمة
-    }
-}
-
-
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {
     const telegramApp = window.Telegram.WebApp;

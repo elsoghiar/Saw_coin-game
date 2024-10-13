@@ -51,12 +51,8 @@
        <!-- Account Page -->
         <div id="accountPage" class="screen-content scrollable">
             <img src="i/friends3.png" alt="invite Image" class="invite-image">
-             <!-- هذا هو العنصر الذي يستخدمه Google لترجمة الصفحة (سيكون مخفيًا لاحقًا) -->
-             <div id="google_translate_element"></div>
-               <!-- زر الترجمة المخصص الذي سيراه المستخدم -->
-              <button class="select-language" onclick="translatePage()">language</button>
               <p id="info">info</p>
-               <div class="user-info">
+                <div class="user-info">
                 <div class="user-name"><span id="userTelegramName">Username</span></div>
                <div class="user-id"><span id="userTelegramId">123456</span></div>
             </div> 
@@ -131,6 +127,7 @@
          <!-- <button id="TheneverendingpuzzlePuzzleBtn" class="The-never-ending-puzzle">The never ending puzzle</button> --> 
             <!-- Puzzle Container -->
             <div id="puzzleContainer" class="puzzle-container hidden">
+              <span id="closeModal" class="close">&times;</span> 
                 <div class="puzzle-content">
                     <h2>Today's Puzzle</h2>
                     <div id="puzzleQuestion"></div>

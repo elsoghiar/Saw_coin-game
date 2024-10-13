@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="SgT4PAGADooer2kIL_VItepZXIvIqUBTNGJVRuF8Cz0" />
-    <link rel="icon" type="i/Logo" href="/vite.svg" />
+    <link rel="icon" type="i/png" href="/Logo.png" />
     <title> Jigsaw's Game </title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="puzzle.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -52,7 +53,7 @@
         <div id="accountPage" class="screen-content scrollable">
             <img src="i/friends3.png" alt="invite Image" class="invite-image">
               <p id="info">info</p>
-                <div class="user-info">
+               <div class="user-info">
                 <div class="user-name"><span id="userTelegramName">Username</span></div>
                <div class="user-id"><span id="userTelegramId">123456</span></div>
             </div> 
@@ -60,7 +61,7 @@
             <p id="i">Invited Friends</p>
             <div class="invite-section">
                 <button class="invite-more" id="inviteFriendsBtn">Invite Friends</button>
-                <button class="invite-copy" id="copyInviteLinkBtn">🔗</button>
+                <button class="invite-copy" id="copyInviteLinkBtn">Copy</button>
             </div>
             <ul id="friendsList" class="friends-list"></ul>
         </div>
@@ -73,13 +74,13 @@
                 <div class="boost-item">
                     <img src="i/c.png" alt="Click Boost Image" class="boost-icon">
                     <p>Click ×<span id="clickMultiplier">2</span></p>
-                    <p><span id="boostUpgradeCost">2500</span> Coins</p>
+                    <p><span id="boostUpgradeCost">4500</span> Coins</p>
                     <button id="boostUpgradeBtn">Upgrade</button>
                 </div>
                 <div class="boost-item">
                     <img src="i/b.png" alt="Coin Boost Image" class="boost-icon">
-                    <p>Coins: <span id="coinBoostLevel">10,000</span></p>
-                    <p><span id="coinUpgradeCost">2500</span> Coins</p>
+                    <p>Energy coins: <span id="coinBoostLevel">10,000</span></p>
+                    <p><span id="coinUpgradeCost">4500</span> Coins</p>
                     <button id="coinUpgradeBtn">Upgrade</button>
                 </div>
                <!-- <div class="boost-item">
@@ -98,7 +99,7 @@
             <section id="taskcontainer" class="task-container"></section>
             
             <section class="task-container">
-              <p id="t"> invite friends Tasks! </p>
+              <p id="t"> invite friends </p>
                 <div class="task-item">
                     <img src="i/frends.png" alt="Invite Friends" class="task-icon">
                     <p> Invite friends </p>
@@ -239,7 +240,7 @@
                 <!-- Level 1 -->
                 <div class="level-item" id="levelOne">
                     <img src="i/1.png" alt="Level 1 Image" class="level-image">
-                    <p> Level 1 Beginning</p>
+                    <p> Level 1 junior</p>
                     <p>100K coin</p>
                     <div class="progress-bar">
                         <div class="progress-bar-inner" id="levelOneProgress" style="width: 0%;"></div>
@@ -258,11 +259,8 @@
         <div class="modal-image">
          <img src="i/Boosts3.png" alt="Centered Image"> <!-- صورة في المنتصف -->
       </div>
-       <p id="upgradeText">Are you sure you want to upgrade to the next level?</p>
-       <p id="currentLevelDisplay">Current Level: <span id="currentLevel"></span></p>
-       <p id="currentCoinsDisplay">Coins Available: <span id="currentCoins"></span></p>
-       <p id="upgradeCostDisplay">Cost of Upgrade: <span id="upgradeCost"></span></p>
-       <div class="confirmation-buttons">
+        <p id="upgradeText">"Are you sure you want to upgrade? Please note that the upgrade cost will be deducted from your coins.</p>
+        <div class="confirmation-buttons">
         <button id="confirmUpgradeBtn" class="game-button">Upgrade</button>
         <button id="cancelUpgradeBtn" class="game-button">Close</button>
       </div>
@@ -270,14 +268,14 @@
 
         <!-- Bottom Navigation -->
         <nav class="menu">
-            <button data-target="mainPage">
-                <img src="i/Home.png" alt="Play"> main
-            </button>
             <button data-target="tasksPage">
                 <img src="i/tasks.png" alt="Tasks"> Tasks
             </button>
             <button data-target="Puzzlespage">
-                <img src="i/file1.png" alt="Puzzles"> Puzzle
+                <img src="i/key1.png" alt="Puzzles"> Puzzle
+            </button>
+            <button data-target="mainPage">
+                <img src="i/Home.png" alt="Play"> main
             </button>
             <button data-target="accountPage">
                 <img src="i/person.webp" alt="Account"> Friends
@@ -287,7 +285,7 @@
             </button>
          </nav>
      </div>
-  
+ 
       <script type="module" src="tasks.js"></script>
      <script type="module" src="puzzle.js"></script>
     <script type="module" src="script.js"></script>

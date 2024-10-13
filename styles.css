@@ -192,25 +192,15 @@ body {
 }
 
 #balanceAmount {
+    font-family: 'Fira Mono', 'Rubik', sans-serif; 
     font-weight: bold;
     margin: 0 auto;
     font-size: 40px;
-    color: #fff;
+    color: #fff; 
     display: block;
-    position: relative; /* لجعل العنصر ثابتًا */
-    transition: transform 0.3s ease-in-out; /* تأثير تغيير الرقم */
+    position: relative;
+    transition: transform 0.5s ease-in-out;
 }
-
-@keyframes balanceAnimation {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); } /* تحريك الرقم للأعلى */
-    100% { transform: translateY(0); }
-}
-
-#balanceAmount.updating {
-    animation: balanceAnimation 0.5s ease-in-out; /* تطبيق التحريك عند التحديث */
-}
-
 
 #balanceAmount::before {
     content: "";

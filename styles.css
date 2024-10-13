@@ -865,3 +865,34 @@ body {
     margin-right: 10px;
 }*/
 
+/* إخفاء الشعار الافتراضي لـ Google */
+.goog-logo-link {
+  display: none !important;
+}
+
+/* إخفاء مربع اللغة الافتراضي */
+.goog-te-gadget {
+  font-size: 0; /* يمكنك تغيير الحجم حسب الحاجة */
+}
+
+/* تخصيص مظهر زر الترجمة */
+.select-language {
+  font-family: 'Arial', sans-serif; /* تغيير نوع الخط */
+  font-size: 16px; /* حجم النص */
+  color: white; /* لون النص */
+  background-color: #4CAF50; /* لون خلفية الزر */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px; /* زوايا مستديرة */
+}
+
+/* عند تحريك الماوس على الزر */
+.select-language:hover {
+  background-color: #45a049;
+}
+
+/* إخفاء صندوق الترجمة الافتراضي */
+#google_translate_element {
+  display: none; /* إخفاء صندوق اختيار اللغة الافتراضي */
+}

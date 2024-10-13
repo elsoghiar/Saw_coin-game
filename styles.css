@@ -493,10 +493,10 @@ body {
 } 
 
 .boost-item, .task-item {
-    width: 100%;
+    width: 90%;
     max-width: 300px;
     margin: 10px 0;
-    padding: 8px;
+    padding: 10px;
     border: 2px solid #343434; 
     background: linear-gradient(180deg, #000, #9f0000);
     border-radius: 10px;

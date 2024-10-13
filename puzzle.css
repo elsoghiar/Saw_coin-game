@@ -55,7 +55,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 50000;
+    z-index: 99999;
     transform: translateY(0); /* يظهر من الأسفل */
     height: 80vh;
     display: flex;

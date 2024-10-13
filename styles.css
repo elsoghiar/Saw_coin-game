@@ -880,16 +880,17 @@ body {
   font-family: 'Arial', sans-serif; /* تغيير نوع الخط */
   font-size: 16px; /* حجم النص */
   color: white; /* لون النص */
-  background-color: #4CAF50; /* لون خلفية الزر */
-  border: none;
-  padding: 10px 20px;
+  background: linear-gradient(180deg, #000, #9f0000);
+  color: #fff;
+  border: 2px solid #343434;
+  padding: 10px 10px;
   cursor: pointer;
-  border-radius: 5px; /* زوايا مستديرة */
+  border-radius: 15px; /* زوايا مستديرة */
 }
 
 /* عند تحريك الماوس على الزر */
 .select-language:hover {
-  background-color: #45a049;
+  background: linear-gradient(90deg, #562a04, #794106, #9f620c, #d69a1c);
 }
 
 /* إخفاء صندوق الترجمة الافتراضي */

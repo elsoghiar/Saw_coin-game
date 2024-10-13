@@ -445,11 +445,11 @@ body {
 } 
 
 .invite-copy {
-    width: 18%; 
+    width: 15%; 
     background: linear-gradient(180deg, #000, #9f0000);
     color: #fff;
     border: 2px solid #343434; 
-    padding: 7px;
+    padding: 5px;
     font-size: 15px;
     font-weight: bold;
     border-radius: 15px;

@@ -771,20 +771,27 @@ document.getElementById('closeModal').addEventListener('click', function() {
 });
 
 
+// تحديث الرصيد مع تأثير الحركة
 function updateBalance(newBalance) {
-    const balanceElement = document.getElementById('balanceAmount');
+    const balanceElement = uiElements.balanceDisplay; // من الملف الرئيسي
+
+    const direction = newBalance > gameState.balance ? 1 : -1; // تحديد الاتجاه
+    balanceElement.style.transform = `translateY(${direction * -20}px)`; // حركة لأعلى أو أسفل
     
-    // إضافة فئة التحريك
-    balanceElement.classList.add('updating');
-
-    // تحديث الرصيد
-    balanceElement.textContent = newBalance;
-
-    // إزالة فئة التحريك بعد انتهاء التحريك
     setTimeout(() => {
-        balanceElement.classList.remove('updating');
-    }, 500); // يجب أن يكون نفس وقت التحريك في CSS
+        balanceElement.innerText = formatNumber(newBalance); // تحديث الرقم بعد الحركة
+        balanceElement.style.transform = 'translateY(0)'; // إرجاع الرقم إلى مكانه الأصلي
+    }, 500); // مدة التأثير
+
+    gameState.balance = newBalance; // تحديث حالة اللعبة
+    saveGameState(); // حفظ التغييرات
 }
+
+// مثال: تحديث الرصيد بعد 3 ثوانٍ
+setTimeout(() => {
+    updateBalance(1050); // تغيير الرصيد إلى 1050
+}, 3000);
+
 
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {

@@ -773,19 +773,20 @@ document.getElementById('closeModal').addEventListener('click', function() {
 
 // تهيئة Google Translate عند تحميل الصفحة
 function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en', // اللغة الافتراضية للموقع
-    includedLanguages: 'en,ar,fr,de,es', // اللغات المسموح بها (يمكنك تعديلها)
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-  }, 'google_translate_element');
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ar,fr,de,es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
 }
 
-// وظيفة مخصصة لتفعيل الترجمة عند الضغط على الزر
+// وظيفة مخصصة لتغيير اللغة
 function translatePage() {
-  const translateElement = document.querySelector('.goog-te-combo');
-  if (translateElement) {
-    translateElement.click(); // فتح قائمة اختيار اللغة
-  }
+    const translateElement = document.querySelector('.goog-te-combo');
+    if (translateElement) {
+        translateElement.value = 'ar'; // هنا نحدد اللغة المطلوبة (على سبيل المثال 'ar' للغة العربية)
+        translateElement.dispatchEvent(new Event('change')); // إطلاق حدث "التغيير" لإجراء الترجمة
+    }
 }
 
 

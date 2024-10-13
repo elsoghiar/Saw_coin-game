@@ -193,11 +193,10 @@ body {
     margin: 0 auto;
     font-size: 40px;
     color: #fff;
-    display: block;
-    position: relative;
-    text-align: center;
+    display: flex; /* استخدام flexbox للمحاذاة */
+    align-items: center; /* محاذاة العناصر عموديًا */
+    justify-content: center; /* محاذاة العناصر أفقيًا */
 }
-
 
 #balanceAmount::before {
     content: "";
@@ -208,7 +207,7 @@ body {
     background-size: contain; /* يجعل الصورة تناسب الحجم المحدد */
     background-repeat: no-repeat;
     margin-right: 5px; /* مسافة بين الصورة والرقم */
-    margin-top: 2px;
+    vertical-align: middle; /* ضبط المحاذاة الرأسية */
 }
 
 /*.user-level {

@@ -165,36 +165,34 @@ async function fetchUserDataFromTelegram() {
     telegramApp.ready();
 
     const userTelegramId = telegramApp.initDataUnsafe.user?.id;
-    const userTelegramName = telegramApp.initDataUnsafe.user?.username;
+    let userTelegramName = telegramApp.initDataUnsafe.user?.username;
 
-    if (!userTelegramId || !userTelegramName) {
-        throw new Error("Failed to fetch Telegram user data.");
+    if (!userTelegramId) {
+        throw new Error("Failed to fetch Telegram user ID.");
+    }
+
+    // إذا لم يتوفر اسم المستخدم، استخدم الـ ID كاسم المستخدم
+    if (!userTelegramName) {
+        userTelegramName = `User_${userTelegramId}`;
     }
 
     uiElements.userTelegramIdDisplay.innerText = userTelegramId;
     uiElements.userTelegramNameDisplay.innerText = userTelegramName;
 
-    // تحقق من المستخدم في قاعدة البيانات، سجل إذا لم يكن موجودًا
+    // تحقق من المستخدم أو سجل المستخدم إذا لم يكن موجودًا
     const { data, error } = await supabase
         .from('users')
         .select('*')
         .eq('telegram_id', userTelegramId)
-        .maybeSingle(); 
-
-    if (error) {
-        console.error('Error fetching user data:', error);
-        throw new Error('Failed to fetch user data');
-    }
+        .maybeSingle();
 
     if (data) {
-        // المستخدم مسجل مسبقاً
-        gameState = { ...gameState, ...data };
-        saveGameState();
-        loadFriendsList(); // تحميل قائمة الأصدقاء بعد جلب البيانات
-        updateTasksProgress(); // تحديث المهام بناءً على البيانات المسترجعة
+        gameState = { ...gameState, ...data };  // تحديث حالة اللعبة
+        saveGameState();  // حفظ حالة اللعبة
+        loadFriendsList();  // تحميل قائمة الأصدقاء
+        updateTasksProgress();  // تحديث تقدم المهام
     } else {
-        // تسجيل مستخدم جديد
-        await registerNewUser(userTelegramId, userTelegramName);
+        await registerNewUser(userTelegramId, userTelegramName);  // تسجيل مستخدم جديد
     }
 }
 
@@ -608,26 +606,31 @@ function updateBoostsDisplay() {
 async function loadFriendsList() {
     const userId = uiElements.userTelegramIdDisplay.innerText;
 
-    if (!userId) {
-        console.error("User ID is missing.");
-        uiElements.friendsListDisplay.innerHTML = `<li>Error: Unable to load friends list. Please try again later.</li>`;
-        return;
-    }
-
     try {
-        // جلب قائمة الأصدقاء الذين تمت دعوتهم بواسطة المستخدم الحالي فقط
         const { data, error } = await supabase
             .from('users')
             .select('invites')
             .eq('telegram_id', userId)
             .single();
 
-        if (error) {
-            console.error('Error fetching friends list:', error.message);
-            uiElements.friendsListDisplay.innerHTML = `<li>Error: Unable to fetch friends at the moment.</li>`;
-            return;
-        }
+        if (!error && data && data.invites) {
+            gameState.friends = data.invites.length;  // تحديث عدد الأصدقاء
+            updateTasksProgress();  // تحديث تقدم المهام
 
+            uiElements.friendsListDisplay.innerHTML = '';  // مسح القائمة القديمة
+            data.invites.forEach(friend => {
+                const li = document.createElement('li');
+                li.innerText = friend;
+                uiElements.friendsListDisplay.appendChild(li);
+            });
+        } else {
+            uiElements.friendsListDisplay.innerHTML = '<li>No friends invited yet.</li>';
+        }
+    } catch (err) {
+        console.error("Unexpected error loading friends list:", err);
+        uiElements.friendsListDisplay.innerHTML = `<li>Error: Unexpected issue occurred while loading friends.</li>`;
+    }
+ }
         // التأكد من أن الدعوات تخص المستخدم الحالي فقط
         if (data && data.invites && data.invites.length > 0) {
             uiElements.friendsListDisplay.innerHTML = ''; // مسح القائمة القديمة
@@ -672,7 +675,8 @@ function updateTaskBtnState(button, isActive) {
 
 // المطالبة بمكافأة المهمة
 function claimTaskReward(friendsRequired) {
-    const friendsCount = gameState.friends.length;
+function claimTaskReward(friendsRequired) {
+    const friendsCount = gameState.friends || 0;  // تأكد من أن gameState.friends تم تعريفه مسبقًا.
 
     if (friendsCount >= friendsRequired && !gameState.claimedRewards.tasks.includes(friendsRequired)) {
         let reward = 0;
@@ -683,16 +687,16 @@ function claimTaskReward(friendsRequired) {
         }
 
         gameState.balance += reward;
-        gameState.claimedRewards.tasks.push(friendsRequired); // تسجيل المكافأة فقط للمرة الأولى
-        updateUI();
+        gameState.claimedRewards.tasks.push(friendsRequired);  // تحديث المهام المكتملة
+        updateUI();  // تحديث واجهة المستخدم
         showNotification(uiElements.purchaseNotification, `Successfully claimed ${formatNumber(reward)} reward!`);
-        updateUserData();
-        saveGameState(); // التأكد من حفظ المكافأة
+        updateUserData();  // تحديث البيانات في قاعدة البيانات
+        saveGameState();  // حفظ حالة اللعبة
     } else {
         showNotification(uiElements.purchaseNotification, `Invite ${friendsRequired - friendsCount} more friends to claim the reward.`);
     }
-}
-
+  }
+} 
 // نسخ رابط الدعوة
 function copyInviteLink() {
     const inviteLink = `https://t.me/SAWCOIN_BOT?start=${uiElements.userTelegramIdDisplay?.innerText || ''}`;
@@ -771,6 +775,63 @@ document.getElementById('closeModal').addEventListener('click', function() {
 });
 
 
+
+let currentLevelIndex = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.level-container');
+    const totalLevels = document.querySelectorAll('.level-item').length;
+    const leftArrow = document.querySelector('.arrow-btn.left');
+    const rightArrow = document.querySelector('.arrow-btn.right');
+
+    // تحديث حالة الأزرار
+    function updateArrows() {
+        if (currentLevelIndex === 0) {
+            leftArrow.classList.add('disabled');
+        } else {
+            leftArrow.classList.remove('disabled');
+        }
+
+        if (currentLevelIndex === totalLevels - 1) {
+            rightArrow.classList.add('disabled');
+        } else {
+            rightArrow.classList.remove('disabled');
+        }
+    }
+
+    function scrollLeft() {
+        const levelWidth = container.clientWidth;
+        if (currentLevelIndex > 0) {
+            currentLevelIndex--;
+            container.scrollTo({
+                left: currentLevelIndex * levelWidth,
+                behavior: 'smooth'
+            });
+        }
+        updateArrows();
+    }
+
+    function scrollRight() {
+        const levelWidth = container.clientWidth;
+        if (currentLevelIndex < totalLevels - 1) {
+            currentLevelIndex++;
+            container.scrollTo({
+                left: currentLevelIndex * levelWidth,
+                behavior: 'smooth'
+            });
+        }
+        updateArrows();
+    }
+
+    // إرفاق الأحداث للأزرار
+    leftArrow.addEventListener('click', scrollLeft);
+    rightArrow.addEventListener('click', scrollRight);
+
+    // تحديث حالة الأزرار عند البدء
+    updateArrows();
+});
+
+
 // تهيئة تكامل Telegram
 function initializeTelegramIntegration() {
     const telegramApp = window.Telegram.WebApp;
@@ -798,4 +859,3 @@ function initializeTelegramIntegration() {
 }
 
 initializeApp();
-
